@@ -1,0 +1,78 @@
+<head>
+  <title>TRUCKERS</title>
+
+  <meta name="viewport" content="width=device-width, height=device-height, initial-scale=1, user-scalable=no">
+
+  <link href='http://fonts.googleapis.com/css?family=Roboto:400,300,100' rel='stylesheet' type='text/css'>
+  <link href='http://fonts.googleapis.com/css?family=Oxygen:300,400,700' rel='stylesheet' type='text/css'>
+  <link href='http://fonts.googleapis.com/css?family=Lora' rel='stylesheet' type='text/css'>
+
+  <link rel="import" href="/bower_components/core-icon/core-icon.html">
+
+  <script src="https://apis.google.com/js/client:platform.js" async defer></script>
+</head>
+
+<body></body>
+
+<template name="home">
+
+	<header id="header" class="bar bar-nav">
+	  <h1 class="title">TRUCKERS <strong>APP</strong></h1>
+	  <a href="/test">
+		<span class="icon icon-person pull-right"></span>
+	  </a>
+	</header>
+	{{> landing }}
+	
+</template>
+
+<template name="layout">
+<div class="template"> 
+	{{> home }}
+
+	<div class="content">
+
+		  {{> yield }}
+		
+	</div>
+</div>
+</template>
+
+<template name="landing">
+
+ <ul class="landing-animate top-list">
+ 	<li> <span> TOOLS </span> 
+		 <ul class="table-view card">
+		 	
+		 	<li class="table-view-cell media">
+		 		<a href="/calc" class="one navigate-right">
+			 		<img class="media-object pull-left" src="/calc4.png">
+			 		<div class="media-body landing-animate">
+				 		<strong>Trip Calculator &copy;</strong>
+				 		<p>Calculate your trips!</p>
+			 		</div>
+		 		</a>
+		 	</li>
+
+		 	<li class="table-view-cell media">
+		 		<a href="/weather" class="navigate-right">
+			 		<img class="media-object pull-left" src="/weather2.png">
+			 		<div class="media-body landing-animate">
+				 		<strong>Weather</strong>
+				 		<p>Get route Weather updates</p>
+			 		</div>
+		 		</a>
+		 	</li>
+
+		 </ul>
+ 	</li>
+ 	
+ </ul>
+</template>
+
+
+<template name="test">
+
+	<p>testing routes</p>
+
+</template>

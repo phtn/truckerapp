@@ -1,0 +1,70 @@
+<template name="calc">
+<div class="left-animate">
+	<header class="bar bar-standard left-animate sub-title">
+		<a href="/calc-settings">
+			<span class="icon icon-gear pull-left a-link"></span>
+		</a>
+		<h1 id="calc-title" class="title">TripCalculator&copy;</h1>
+		<a href="/">
+			<span class="icon icon-close pull-right a-link">
+
+			</span>
+		</a>
+	</header>
+	<br/><br/>
+
+	<!-- calc content -->
+
+	<form class="card input-group">
+	  <div class="input-row">
+	    <label><strong>Distance</strong></label>
+	    <input class="input-calc" type="number" placeholder=" in miles">
+	  </div>
+	  <div class="input-row">
+	    <label><strong>Speed</strong></label>
+	    <input id="input-speed-man" type="number" placeholder=" mph">
+	  </div>
+
+	  
+	</form>
+	<div class="calc-submit">
+	<button class="btn btn-positive">Submit <span class="icon icon-check"></span></button>
+	</div>
+</div>
+</template>
+
+<!-- SETTINGS -->
+
+<template name="calc-settings">
+<div class="landing-animate">
+	<header id="calc-settings-header" class="bar bar-standard landing-animate sub-title">
+		<a href="/calc">
+			<span class="icon icon-check pull-left a-link"></span>
+		</a>
+
+		<h1 id="calc-title" class="title">Preferences</h1>
+		<a href="/calc">
+			<span class="icon icon-close pull-right a-link">
+
+			</span>
+		</a>
+
+	</header>
+	<br/><br/>
+
+	<form class="card input-group">
+	  <div class="input-row">
+	    <label><strong>Rate ($) </strong></label>
+	    <input type="number" placeholder="example: $1.28">
+	  </div>
+	  <div class="input-row">
+	    <label><strong>Set speed</strong></label>
+	    <input id="input-speed" type="number" placeholder="in mph">
+	  </div>
+	  <div class="toggle active">
+  		<div class="toggle-handle"></div>
+	  </div>
+	</form>
+
+</div>
+</template>

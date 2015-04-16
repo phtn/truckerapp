@@ -1,0 +1,119 @@
+/* CSS declarations go here */
+
+
+
+#header {
+	background-color: #222;
+}
+.title {
+	font-family: 'Oxygen', sans-serif;
+	font-weight: 900;
+	color: #999;
+
+}
+.sub-title {
+	font-family: 'Oxygen', sans-serif;
+	font-weight: 900;
+	color: #222;
+	background-color: #4285f4;
+}
+
+.landing {
+	margin: auto 0:;
+}
+div#tab {
+	background-color: #ccc;
+}
+
+.icon {
+	width: inherit;
+}
+
+body {
+	font-family: 'Roboto', sans-serif;
+	font-weight: 300;
+	background-color: #ccc;
+}
+
+strong {
+	color: #146eb4;
+	font-family: 'Oxygen', sans-serif;
+}
+.top-list {
+	padding-left: 0px;
+}
+ul {
+	color: #ccc;
+	list-style-type: none;
+}
+li span {
+	color: #333;
+	font-family: 'Oxygen', sans-serif;
+	font-weight: 400;
+	font-size: 14px;
+	padding-left: 10px;
+
+}
+img {
+	width: 42px;
+	height: auto;
+}
+
+/* CALC */
+
+.a-link {
+	color: #444;
+	text-decoration: none;
+}
+#calc-title {
+	font-family: 'Oxygen', sans-serif;
+	font-weight: 300;
+	font-size: 1em;
+	color: #f4f7f9;
+}
+
+
+
+#caret {
+	color: #333;
+	padding: 0px;
+	margin: 0;
+}
+input {
+	font-family: 'Roboto', sans-serif;
+	font-weight: 300;
+	text-indent: 10px;
+}
+
+#calc-settings-header {
+	background-color: #4285f4;
+}
+h1#calc-settings-title {
+	color: #222;
+	font-family: 'Lora', sans-serif;
+}
+.calc-submit {
+	padding-top: 10px;
+	display: table;
+	margin: 0 auto;
+}
+/* Sign In */
+
+.sign {
+	padding-left: 25%;
+}
+
+@media screen and (min-width: 600px) {
+	body {
+		width: 600px;
+		margin-left: auto;
+		margin-right: auto;
+	}
+	header {
+		width: 600px;
+		margin-left: auto;
+		margin-right: auto;
+	}
+
+
+}
