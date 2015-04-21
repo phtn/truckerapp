@@ -8,7 +8,8 @@ meteor-platform
 autopublish
 insecure
 ecwyne:polymer-elements
-axw:ratchet
 iron:router
 accounts-ui
 accounts-password
+twbs:bootstrap
+mmorita:bootcardsjs

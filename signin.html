@@ -1,15 +1,19 @@
 <template name="sign-in">
 <div class="down-animate">
-	<header class="bar bar-standard">
-			<h1 id="calc-title" class="title">Profile</h1>
-			<a href="/">
-				<span class="icon icon-close pull-right a-link">
+	<div class="panel panel-success">
+		  <!-- Default panel contents -->
+		  <div class="panel-heading"><span class="glyphicon glyphicon-user"></span> Profile <a href="/"><span class="glyphicon glyphicon-remove pull-right right"></span></a></div>
+		  
 
-				</span>
-			</a>
-		</header>
-		<br/><br/><br/>
-	<div class="down-animate sign">{{> loginButtons}}</div>
+		<!-- List group -->
+		<ul class="list-group">
+		    
+		    <li class="list-group-item">
+				<div class="down-animate sign">{{> loginButtons}}</div>	    	
+		    </li>
+		  </ul>
+	</div>
+	
 	
 </div>
 </template>

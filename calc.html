@@ -1,34 +1,27 @@
 <template name="calc">
 <div class="left-animate">
-	<header class="bar bar-standard left-animate sub-title">
-		<a href="/calc-settings">
-			<span class="icon icon-gear pull-left a-link"></span>
-		</a>
-		<h1 id="calc-title" class="title">TripCalculator&copy;</h1>
-		<a href="/">
-			<span class="icon icon-close pull-right a-link">
 
-			</span>
-		</a>
-	</header>
-	<br/><br/>
+	<div class="panel panel-success">
+		  <!-- Default panel contents -->
+		  <div class="panel-heading"><span class="glyphicon glyphicon-th"></span> Trip Calculator <a href="/"><span class="glyphicon glyphicon-remove pull-right right"></span></a></div>
+		  
 
-	<!-- calc content -->
-
-	<form class="card input-group">
-	  <div class="input-row">
-	    <label><strong>Distance</strong></label>
-	    <input class="input-calc" type="number" placeholder=" in miles">
-	  </div>
-	  <div class="input-row">
-	    <label><strong>Speed</strong></label>
-	    <input id="input-speed-man" type="number" placeholder=" mph">
-	  </div>
-
-	  
-	</form>
-	<div class="calc-submit">
-	<button class="btn btn-positive">Submit <span class="icon icon-check"></span></button>
+		<!-- List group -->
+		<ul class="list-group">
+		    
+		    <li class="list-group-item">
+		    	<div class="input-group input-group-sm">
+				  <span class="input-group-addon" id="sizing-addon3">Distance</span>
+				  <input type="text" class="form-control" placeholder="in miles" aria-describedby="sizing-addon3">
+				</div>
+		    </li>
+		    <li class="list-group-item">
+		    	<div class="input-group input-group-sm">
+				  <span class="input-group-addon" id="sizing-addon3">Speed &nbsp;&nbsp;&nbsp;</span>
+				  <input type="text" class="form-control" placeholder="mph" aria-describedby="sizing-addon3">
+				</div>
+		    </li>
+		  </ul>
 	</div>
 </div>
 </template>

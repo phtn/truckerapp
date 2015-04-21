@@ -1,15 +1,31 @@
 /* CSS declarations go here */
 
-
-
-#header {
-	background-color: #222;
+* {
+  -webkit-border-radius: 0 !important;
+     -moz-border-radius: 0 !important;
+          border-radius: 0 !important;
 }
-.title {
-	font-family: 'Oxygen', sans-serif;
-	font-weight: 900;
-	color: #999;
 
+.navbar {
+	background-color: #222;
+	margin-top: 0px;
+}
+.title span {
+	color: #4285f4;
+}
+
+.title {
+	font-family: 'Audiowide', cursive;
+	font-weight: 400;
+	font-size: 1.5em;
+	color: #999;
+	letter-spacing: 2px;
+	margin-left: 15px;
+
+}
+.sign {
+	color: #4285f4;
+	margin-right: 15px;
 }
 .sub-title {
 	font-family: 'Oxygen', sans-serif;
@@ -20,6 +36,14 @@
 
 .landing {
 	margin: auto 0:;
+}
+.panel {
+	margin-top: -25px;
+	border-color: #ccc;
+}
+.right {
+	margin-top: 2px;
+	color: #333;
 }
 div#tab {
 	background-color: #ccc;
@@ -57,19 +81,13 @@ li span {
 img {
 	width: 42px;
 	height: auto;
+	margin-left: 15px;
 }
 
 /* CALC */
 
-.a-link {
-	color: #444;
-	text-decoration: none;
-}
-#calc-title {
-	font-family: 'Oxygen', sans-serif;
-	font-weight: 300;
-	font-size: 1em;
-	color: #f4f7f9;
+.calc-label {
+	
 }
 
 
@@ -100,7 +118,6 @@ h1#calc-settings-title {
 /* Sign In */
 
 .sign {
-	padding-left: 25%;
 }
 
 @media screen and (min-width: 600px) {

@@ -2,11 +2,13 @@
   <title>TRUCKERS</title>
 
   <meta name="viewport" content="width=device-width, height=device-height, initial-scale=1, user-scalable=no">
-
+<!-- FONTS -->
   <link href='http://fonts.googleapis.com/css?family=Roboto:400,300,100' rel='stylesheet' type='text/css'>
   <link href='http://fonts.googleapis.com/css?family=Oxygen:300,400,700' rel='stylesheet' type='text/css'>
   <link href='http://fonts.googleapis.com/css?family=Lora' rel='stylesheet' type='text/css'>
+  <link href='http://fonts.googleapis.com/css?family=Audiowide' rel='stylesheet' type='text/css'>
 
+<!-- POLYMER -->
   <link rel="import" href="/bower_components/core-icon/core-icon.html">
 
   <script src="https://apis.google.com/js/client:platform.js" async defer></script>
@@ -16,18 +18,18 @@
 
 <template name="home">
 
-	<header id="header" class="bar bar-nav">
-	  <h1 class="title">TRUCKERS <strong>APP</strong></h1>
-	  <a href="/test">
-		<span class="icon icon-person pull-right"></span>
-	  </a>
-	</header>
-	{{> landing }}
-	
+	<nav class="navbar navbar-default navbar-fixed-top">
+		<div class="container-fluid">
+			<div class="navbar-header">
+		  	<h1 class="title"><span>4</span>TRUCKERS <a href="{{ pathFor 'signin' }}"><span class="glyphicon glyphicon-off pull-right sign"></span></a></h1>
+		  	</div>
+	  		
+		</div>
+
+	</nav>
 </template>
 
 <template name="layout">
-<div class="template"> 
 	{{> home }}
 
 	<div class="content">
@@ -35,37 +37,30 @@
 		  {{> yield }}
 		
 	</div>
-</div>
 </template>
 
 <template name="landing">
 
  <ul class="landing-animate top-list">
- 	<li> <span> TOOLS </span> 
-		 <ul class="table-view card">
-		 	
-		 	<li class="table-view-cell media">
-		 		<a href="/calc" class="one navigate-right">
-			 		<img class="media-object pull-left" src="/calc4.png">
-			 		<div class="media-body landing-animate">
-				 		<strong>Trip Calculator &copy;</strong>
-				 		<p>Calculate your trips!</p>
-			 		</div>
-		 		</a>
-		 	</li>
+ 	
+ 	<li>
+ 		<div class="panel panel-primary">
+		  <!-- Default panel contents -->
+		  <div class="panel-heading"><span class="glyphicon glyphicon-inbox"></span> Tools</div>
+		  
 
-		 	<li class="table-view-cell media">
-		 		<a href="/weather" class="navigate-right">
-			 		<img class="media-object pull-left" src="/weather2.png">
-			 		<div class="media-body landing-animate">
-				 		<strong>Weather</strong>
-				 		<p>Get route Weather updates</p>
-			 		</div>
-		 		</a>
-		 	</li>
-
-		 </ul>
+		  <!-- List group -->
+		  <ul class="list-group">
+		    <a href="/calc"><li class="list-group-item">Trip Calculator &copy; <span class="glyphicon glyphicon-menu-right pull-right right"></span></li></a>
+		    <li class="list-group-item">Weather</li>
+		    <li class="list-group-item">State Taxes</li>
+		    <li class="list-group-item">Fuel Prices</li>
+		    <li class="list-group-item">News</li>
+		    <li class="list-group-item">Truck Parts</li>
+		  </ul>
+		</div>
  	</li>
+ 	
  	
  </ul>
 </template>
