@@ -5,10 +5,14 @@
      -moz-border-radius: 0 !important;
           border-radius: 0 !important;
 }
+a {
+	text-decoration: none;
+}
 
 .navbar {
 	background-color: #222;
 	margin-top: 0px;
+	border-bottom: 1px solid #333;
 }
 .title span {
 	color: #4285f4;
@@ -23,15 +27,18 @@
 	margin-left: 15px;
 
 }
+.content {
+	margin-top: 100px;
+}
 .sign {
-	color: #4285f4;
+	color: #428bca;
 	margin-right: 15px;
 }
 .sub-title {
 	font-family: 'Oxygen', sans-serif;
 	font-weight: 900;
 	color: #222;
-	background-color: #4285f4;
+	background-color: #428bca;
 }
 
 .landing {
@@ -104,8 +111,7 @@ input {
 
 /* Sign In */
 
-.sign {
-}
+
 
 @media screen and (min-width: 600px) {
 	body {
@@ -113,11 +119,12 @@ input {
 		margin-left: auto;
 		margin-right: auto;
 	}
-	header {
+	nav {
 		width: 600px;
 		margin-left: auto;
 		margin-right: auto;
 	}
+
 
 
 }

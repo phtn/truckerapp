@@ -1,0 +1,8 @@
+paper-toggle-button {
+	margin: 0px 10px -2px;
+}
+
+paper-toggle-button::shadow .toggle-button {
+  background-color: #428bca;
+}
+

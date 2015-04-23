@@ -22,76 +22,12 @@
 			    </li>
 			  </ul>
 		</div>
-	<div class="panel panel-success results">
-		<div class="panel-heading"><span class="glyphicon glyphicon-stats"></span> Results <span class="glyphicon glyphicon-bookmark pull-right right"></span></div>
-
-		<ul class="list-group">
-			<li class="list-group-item">
-				<div class="input-group">
-			      <span class="input-group-addon">
-			        <input type="checkbox" aria-label="..." checked="yes">
-			      </span>
-			      <input type="text" placeholder="Driving as Team" class="form-control" aria-label="" disabled="yes">
-			    </div>
-			</li>
-		    <li class="list-group-item">
-		    	<span class="label label-primary calc-label">
-		    		Trip Duration
-		    	</span>
-		    </li>
-		    <li class="list-group-item">
-		    	<span class="label label-default calc-label">
-		    		Minimum Speed
-		    	</span>
-		    </li>
-		    <li class="list-group-item">
-		    	<span class="label label-success calc-label">
-		    		Trip Value
-		    	</span>
-		    </li>
-		    <li class="list-group-item">
-		    	<span class="label label-warning calc-label">
-		    		Hourly Rate
-		    	</span>
-		    </li>
-		    <li class="list-group-item"></li>
-		</ul>
-	</div>
+	{{> results}}
 </div>
 </template>
 
 <!-- SETTINGS -->
 
 <template name="calc-settings">
-<div class="landing-animate">
-	<header id="calc-settings-header" class="bar bar-standard landing-animate sub-title">
-		<a href="/calc">
-			<span class="icon icon-check pull-left a-link"></span>
-		</a>
 
-		<h1 id="calc-title" class="title">Preferences</h1>
-		<a href="/calc">
-			<span class="icon icon-close pull-right a-link">
-
-			</span>
-		</a>
-
-	</header>
-	<br/><br/>
-
-	<form class="card input-group">
-	  <div class="input-row">
-	    <label><strong>Rate ($) </strong></label>
-	    <input type="number" placeholder="example: $1.28">
-	  </div>
-	  <div class="input-row">
-	    <label><strong>Set speed</strong></label>
-	    <input id="input-speed" type="number" placeholder="in mph">
-	  </div>
-	  <div class="toggle active">
-  		<div class="toggle-handle"></div>
-	  </div>
-	</form>
-
-</div>
 </template>

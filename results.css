@@ -1,0 +1,17 @@
+/* DRIVING AS */
+.drive-label {
+	margin-right: 50px;
+	font-weight: bold;
+}
+.check-save {
+	color: #34bf49;
+	margin-top: 0px;
+	margin-left: 40px;
+	//visibility: hidden;
+}
+.drive-toggle {
+	margin: auto 0;
+}
+.team {
+	margin-right: 5px;
+}

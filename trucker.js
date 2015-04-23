@@ -4,13 +4,17 @@
 
 if (Meteor.isClient) {
 
-  Template.landing.events({
-    'click .one': function(){
-      console.log('click registered.');
+  Template.results.events({
+    'click .save-result': function(){
+      console.log('result saved.');
     }
   });
  
-
+  Template.calc.events({
+    'click .check-save': function(){
+      console.log('check-save clicked');
+    }
+  });
 }
 
 
