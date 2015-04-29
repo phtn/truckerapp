@@ -7,15 +7,46 @@ if (Meteor.isClient) {
   Template.results.events({
     'click .save-result': function(){
       console.log('result saved.');
+    },
+    'change #drive-toggle-button': function(){
+      $(".check-save").fadeIn('slow');
+      console.log('toggle changed.');
     }
   });
+
+  Template.results.helpers({
+    number: function(){
+      return Session.get('num');
+    }
+  });
+
+  Session.setDefault('num', 0);
  
   Template.calc.events({
     'click .check-save': function(){
       console.log('check-save clicked');
+    },
+    'keyup #speed-input': function(){
+      var s = $("#speed-input"), // speed-input
+          b = $(".get-btn"), // button
+          c = $(".get"); //check
+
+      if (s.val().length != 0){
+        b.prop('disabled', false);
+        b.css('background-color', '#34bf49');
+
+      } else {
+        b.prop('disabled', true);
+        c.css('color', '#fff');
+      }
+    },
+    'click .get-btn': function(){
+      Session.set('num', Session.get('num') + 1);
     }
+
   });
 }
+
 
 
 if (Meteor.isServer) {

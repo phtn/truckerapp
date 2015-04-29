@@ -7,11 +7,30 @@
 	color: #34bf49;
 	margin-top: 0px;
 	margin-left: 40px;
-	//visibility: hidden;
+	display: none;
 }
 .drive-toggle {
 	margin: auto 0;
 }
 .team {
 	margin-right: 5px;
+}
+/* LABELS */
+
+.gen-label {
+	font-weight: bold;
+}
+
+/* CALC */
+.get {
+	color: #fff;
+	padding-right: 4px;
+	padding-top: 2px;
+	padding-left: 3px;
+}
+.get-btn {
+
+}
+.form-control {
+	font-size: 1em;
 }

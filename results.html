@@ -1,5 +1,5 @@
 <template name="results">
-	<div class="panel panel-success results">
+	<div class="panel panel-default results">
 		<div class="panel-heading"><span class="glyphicon glyphicon-stats"></span> Results <span class="glyphicon glyphicon-bookmark pull-right right save-result"></span></div>
 
 		<ul class="list-group">
@@ -8,9 +8,9 @@
 					<div>
 		    		<span class="drive-label">Driving as: </span>
 		    	</div>
-		    	<div flex class="drive-toggle">
+		    	<div flex class="">
 		    		<span class="team"> Team </span>
-		    		<paper-toggle-button></paper-toggle-button>
+		    		<paper-toggle-button id="drive-toggle-button"></paper-toggle-button>
 		    		<span class="solo"> Solo </span>
 		    	</div>
 		    	<div>
@@ -19,8 +19,11 @@
 		    </div>
 		  </li>
 	    <li class="list-group-item">
-	    	<span class="label label-primary calc-label">
-	    		Trip Duration
+	    	<span class="gen-label">
+	    		Trip Duration:
+	    	</span>
+	    	<span class="label label-success" >
+	    		{{ number }} days
 	    	</span>
 	    </li>
 	    <li class="list-group-item">
