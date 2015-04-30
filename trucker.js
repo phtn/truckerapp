@@ -54,20 +54,35 @@ if (Meteor.isClient) {
 
       // Trip Duration
       getDrive();
-      var rawDays;
-      if (getDrive() == false){ // Team
-        //console.log('Team');
-        if (wholeHour >= 24){ // >= Day
-          rawDays = wholeHour / 24;
+
+      var greater = function(hour){
+
+        var rawDays,
+            dayString = 'day';
+
+        if (wholeHour >= hour){ // >= Team Day
+          rawDays = wholeHour / hour;
           var wholeDay = Math.floor(rawDays),
               hourDecimal = (rawDays % 1),
-              fullHour = Math.floor(hourDecimal * 24);
-          Session.set('getTripDuration', wholeDay + ' days ' + fullHour + ' hrs');
+              dMinDecimal = (hourDecimal % 1),
+              fullHour = Math.floor(hourDecimal * hour),
+              dWholeMin = Math.floor(dMinDecimal * 60);
+
+
+          if (wholeDay > 1){
+            dayString += 's';
+          }
+
+          return Session.set('getTripDuration', wholeDay + ' ' + dayString + ' ' + fullHour + ' hrs  ' + dWholeMin + ' mins');
         } else { // < Day
-          Session.set('getTripDuration', wholeHour + ' hrs ' + wholeMin + ' mins');
+          return Session.set('getTripDuration', wholeHour + ' hrs  ' + wholeMin + ' mins');
         }
+      };
+
+      if (getDrive() == false){ // Team
+        greater(24);
       } else { // Solo
-        console.log('Solo');
+        greater(11);
       }
     }
 
@@ -82,6 +97,8 @@ var getDrive = function(){
   return tog;
   console.log(tog);
 };
+
+
 
 
 if (Meteor.isServer) {
