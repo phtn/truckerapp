@@ -1,7 +1,4 @@
 
-
-  
-
 if (Meteor.isClient) {
 
   Template.results.events({
@@ -15,13 +12,14 @@ if (Meteor.isClient) {
   });
 
   Template.results.helpers({
-    number: function(){
-      return Session.get('num');
+    totalHours: function(){
+      return Session.get('getTotalHours');
+    },
+    tripDuration: function(){
+      return Session.get('getTripDuration');
     }
   });
 
-  Session.setDefault('num', 0);
- 
   Template.calc.events({
     'click .check-save': function(){
       console.log('check-save clicked');
@@ -31,7 +29,7 @@ if (Meteor.isClient) {
           b = $(".get-btn"), // button
           c = $(".get"); //check
 
-      if (s.val().length != 0){
+      if (s.val().length != 0 && $('#distance-input').val().length != 0){
         b.prop('disabled', false);
         b.css('background-color', '#34bf49');
 
@@ -41,12 +39,49 @@ if (Meteor.isClient) {
       }
     },
     'click .get-btn': function(){
-      Session.set('num', Session.get('num') + 1);
+
+      // Total Hours
+      var speedValue = $('#speed-input').val(),
+          distanceValue = $('#distance-input').val(),
+          rawHour = distanceValue / speedValue,
+          wholeHour = Math.floor(rawHour),
+          minDecimal = (rawHour % 1),
+          wholeMin = Math.floor(minDecimal * 60);
+
+      $('.hours').fadeIn('slow');
+
+      Session.set('getTotalHours', wholeHour + ' hrs ' + wholeMin + ' mins' );
+
+      // Trip Duration
+      getDrive();
+      var rawDays;
+      if (getDrive() == false){ // Team
+        //console.log('Team');
+        if (wholeHour >= 24){ // >= Day
+          rawDays = wholeHour / 24;
+          var wholeDay = Math.floor(rawDays),
+              hourDecimal = (rawDays % 1),
+              fullHour = Math.floor(hourDecimal * 24);
+          Session.set('getTripDuration', wholeDay + ' days ' + fullHour + ' hrs');
+        } else { // < Day
+          Session.set('getTripDuration', wholeHour + ' hrs ' + wholeMin + ' mins');
+        }
+      } else { // Solo
+        console.log('Solo');
+      }
     }
+
+
 
   });
 }
 
+// EXAMPLE FUNCTION
+var getDrive = function(){
+  var tog = $('#drive-toggle-button').prop('checked');
+  return tog;
+  console.log(tog);
+};
 
 
 if (Meteor.isServer) {

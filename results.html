@@ -10,7 +10,7 @@
 		    	</div>
 		    	<div flex class="">
 		    		<span class="team"> Team </span>
-		    		<paper-toggle-button id="drive-toggle-button"></paper-toggle-button>
+		    		<paper-toggle-button id="drive-toggle-button" checked="false"></paper-toggle-button>
 		    		<span class="solo"> Solo </span>
 		    	</div>
 		    	<div>
@@ -19,48 +19,62 @@
 		    </div>
 		  </li>
 	    <li class="list-group-item">
-	    	<span class="gen-label">
-	    		Trip Duration:
-	    	</span>
-	    	<span class="label label-success" >
-	    		{{ number }} days
-	    	</span>
+				<div horizontal layout center>
+					<div class="result-labels">
+			    	<span class="gen-label">
+			    		Total Hours:
+			    	</span>
+					</div>
+					<div flex>
+			    	<span class="label label-primary hours" >
+			    		{{ totalHours }}
+			    	</span>
+					</div>
+				</div>
 	    </li>
 	    <li class="list-group-item">
-	    	<span class="label label-default calc-label">
-	    		Minimum Speed
-	    	</span>
+				<div horizontal layout>
+					<div class="result-labels">
+			    	<span class="gen-label">
+			    		Trip Duration:
+			    	</span>
+					</div>
+					<div flex>
+						<span class="label label-default hours" >
+							{{ tripDuration }}
+						</span>
+					</div>
+				</div>
 	    </li>
 	    <li class="list-group-item">
-	    	<span class="label label-success calc-label">
-	    		Trip Value
-	    	</span>
+				<div horizontal layout>
+					<div class="result-labels">
+			    	<span class="gen-label">
+			    		Trip Value:
+			    	</span>
+					</div>
+					<div flex>
+						<span class="label label-success hours" >
+							$1000 in cash
+						</span>
+					</div>
+				</div>
 	    </li>
 	    <li class="list-group-item">
-	    	<span class="label label-warning calc-label">
-	    		Hourly Rate
-	    	</span>
+				<div horizontal layout>
+					<div class="result-labels">
+			    	<span class="gen-label">
+			    		Hourly Rate:
+			    	</span>
+					</div>
+					<div flex>
+						<span class="label label-success hours" >
+							$35 per hour baby!
+						</span>
+					</div>
+				</div>
 	    </li>
-	    <li class="list-group-item">
-	    	<span class="label label-warning calc-label">
-	    		Hourly Rate
-	    	</span>
-	    </li>
-	    <li class="list-group-item">
-	    	<span class="label label-warning calc-label">
-	    		Hourly Rate
-	    	</span>
-	    </li>
-	    <li class="list-group-item">
-	    	<span class="label label-warning calc-label">
-	    		Hourly Rate
-	    	</span>
-	    </li>
-	    <li class="list-group-item">
-	    	<span class="label label-warning calc-label">
-	    		Hourly Rate
-	    	</span>
-	    </li>
+
 	    <li class="list-group-item"></li>
 		</ul>
 	</div>

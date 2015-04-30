@@ -6,11 +6,13 @@
           border-top-radius: 0px !important;
   -webkit-border-bottom-radius: 3px !important;
      -moz-border-bottom-radius: 3px !important;
-          border-bottom-radius: 3px !important;          
+          border-bottom-radius: 3px !important;
 }
 a {
 	text-decoration: none;
 }
+
+button:focus {outline:0;}
 
 .navbar {
 	background-color: #222;
@@ -102,10 +104,10 @@ img {
 .results {
 	margin-top: 1px;
 }
-input[type=number]::-webkit-inner-spin-button, 
-input[type=number]::-webkit-outer-spin-button { 
-  -webkit-appearance: none; 
-  margin: 0; 
+input[type=number]::-webkit-inner-spin-button,
+input[type=number]::-webkit-outer-spin-button {
+  -webkit-appearance: none;
+  margin: 0;
 }
 
 

@@ -19,6 +19,11 @@
 
 .gen-label {
 	font-weight: bold;
+	margin-right: 0px;
+	color: #666;
+}
+.result-labels {
+	width: 125px;
 }
 
 /* CALC */
@@ -33,4 +38,8 @@
 }
 .form-control {
 	font-size: 1em;
+}
+.hours {
+	font-size: 1em;
+	//display: none;
 }
