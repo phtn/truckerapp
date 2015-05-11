@@ -33,13 +33,14 @@
 	padding-top: 2px;
 	padding-left: 3px;
 }
-.get-btn {
 
-}
 .form-control {
 	font-size: 1em;
 }
 .hours {
-	font-size: 1em;
+	font-family: 'Roboto', sans-serif !important;
+	
+	//font-size: 1em;
 	display: none;
+	margin: 0px 5px;
 }

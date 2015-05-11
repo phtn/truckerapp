@@ -9,7 +9,12 @@
           border-bottom-radius: 3px !important;
 }
 a {
-	text-decoration: none;
+	text-decoration: none !important;
+
+}
+
+.spaceBetween {
+	width: 15px;
 }
 
 button:focus {outline:0;}
@@ -33,7 +38,8 @@ button:focus {outline:0;}
 
 }
 .content {
-	margin-top: 100px;
+	margin: 100px 15px 0px; 
+
 }
 .sign {
 	color: #428bca;
@@ -53,8 +59,28 @@ button:focus {outline:0;}
 	margin-top: -25px;
 	border-color: #222;
 }
+div.panel-heading {
+	color: #333;
+}
+h4 {
+	margin: auto 5px;
+	font-size: 1.5em;
+	color: #666;
+	font-family: 'Roboto', sans-serif;
+	font-weight: 100;
+
+
+}
+li.list-group-item {
+	background-color: #efe9e5;
+}
+.more-horiz {
+	
+	color: #ccc;
+}
+
 .right {
-	margin-top: 2px;
+	margin-top: 3px;
 	color: #333;
 }
 div#tab {
@@ -101,18 +127,39 @@ img {
 .calc-label {
 	font-size: 1em;
 }
+
 .results {
 	margin-top: 1px;
+	//display: none;
 }
+
+.form-control {
+	font-weight: bold;
+	color: #428bca;
+}
+
+hr {
+	border: 1px solid #111;
+	color: #333;
+}
+
 input[type=number]::-webkit-inner-spin-button,
 input[type=number]::-webkit-outer-spin-button {
   -webkit-appearance: none;
   margin: 0;
 }
-
+input#distance-input {
+	font-size: 2.5em;
+	color: #4dc47d;
+}
+input#speed-input {
+	font-size: 2.5em;
+	color: #4dc47d;
+}
 
 input {
 	font-family: 'Roboto', sans-serif;
+	font-size: 1.8em;
 	font-weight: 300;
 	text-indent: 10px;
 }

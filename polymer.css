@@ -6,3 +6,20 @@ paper-toggle-button::shadow .toggle-button {
   background-color: #428bca;
 }
 
+paper-input {
+	color: #ccc;
+	font-family: 'Roboto', sans-serif;
+	font-size: 1.8em;
+}
+
+paper-input-decorator /deep/ .focused-underline {
+    /* line color when the input is focused */
+    background-color: #333;
+}
+
+paper-input-decorator /deep/ ::-webkit-input-placeholder {
+    /* platform specific rules for placeholder text */
+    //color: red;
+    font-size: 1em;
+    width: auto;
+}

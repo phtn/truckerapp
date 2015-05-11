@@ -1,4 +1,5 @@
 
+
 if (Meteor.isClient) {
 
   Template.results.events({
@@ -20,6 +21,12 @@ if (Meteor.isClient) {
     }
   });
 
+  Template.calc.helpers({
+    totalHours: function(){
+      return Session.get('getTotalHours');
+    }
+  });
+
   Template.calc.events({
     'click .check-save': function(){
       console.log('check-save clicked');
@@ -38,7 +45,8 @@ if (Meteor.isClient) {
         c.css('color', '#fff');
       }
     },
-    'click .get-btn': function(){
+    'keyup #speed-input': function(){
+
 
       // Total Hours
       var speedValue = $('#speed-input').val(),
@@ -48,7 +56,10 @@ if (Meteor.isClient) {
           minDecimal = (rawHour % 1),
           wholeMin = Math.floor(minDecimal * 60);
 
-      $('.hours').fadeIn('slow');
+      console.log(speedValue.length);
+
+      if (speedValue.length == 2){
+        $('.hours').fadeIn('slow');
 
       Session.set('getTotalHours', wholeHour + ' hrs ' + wholeMin + ' mins' );
 
@@ -84,7 +95,15 @@ if (Meteor.isClient) {
       } else { // Solo
         greater(11);
       }
-    }
+    } else if (speedValue.length == 1) {
+        $('.hours').fadeOut('slow');
+      };
+
+  } // end of if speedValue.length == 2 
+  
+
+  
+      
 
 
 
@@ -113,7 +132,6 @@ if (Meteor.isServer) {
       clientId: "517167569904-u027p85ev6tejj8f5c8jusng6s50noms.apps.googleusercontent.com",
       secret: "4wsvtb2-9rNAvbYyRVlxzw5M"
     });
-
     */
   });
 
@@ -122,22 +140,3 @@ if (Meteor.isServer) {
 if (Meteor.isCordova) {
   console.log("I'm Mobile");
 }
-/*
-  // counter starts at 0
-
-  Session.setDefault('counter', 0);
-
-  Template.hello.helpers({
-    counter: function () {
-      return Session.get('counter');
-    }
-  });
-
-  Template.hello.events({
-    'click button': function () {
-      // increment the counter when button is clicked
-      Session.set('counter', Session.get('counter') + 1);
-    }
-  });
-
-  */

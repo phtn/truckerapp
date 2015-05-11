@@ -1,5 +1,6 @@
-<template name="calc">
+<template name="calc-1">
 <div class="left-animate">
+
 		<div class="panel panel-primary">
 			  <!-- Default panel contents -->
 			  <div class="panel-heading"><span class="glyphicon glyphicon-th"></span> Trip Calculator <a href="/"><span class="glyphicon glyphicon-remove pull-right right"></span></a></div>
@@ -17,7 +18,7 @@
 			    <li class="list-group-item">
 			    	<div class="input-group input-group-sm">
 					  <span class="input-group-addon">Speed &nbsp;&nbsp;&nbsp;</span>
-					  <input type="number" class="form-control" placeholder="mph" aria-describedby="sizing-addon3" id="speed-input">
+					  <input type="number" class="form-control" placeholder="mph" aria-describedby="sizing-addon3" id="speed-input0">
 					  <span class="input-group-btn">
 				        <button class="btn get-btn" type="button" disabled="yes"><span class="glyphicon glyphicon-ok get"></span></button>
 				      </span>
@@ -27,6 +28,53 @@
 		</div>
 	{{> results}}
 </div>
+</template>
+
+<!-- CALC -->
+
+<template name="calc">
+<div flex horizontal layout center-justified class="calc-title down-animate">
+	<core-icon icon="hardware:keyboard"></core-icon><h4> Trip Calculator &copy;</h4>
+</div>
+<br>
+<div class="left-animate">
+<div vertical layout>
+	<div class="left-animate">
+		<paper-input-decorator floatingLabel label="Distance in miles" id="distance-input-dec" type="number" class="input-big">
+			<input type="number" is="core-input" id="distance-input" class="">
+		</paper-input-decorator>
+	</div>
+	<div class="left-animate">
+		<paper-input-decorator floatingLabel label="Speed in mph" id="speed-input-dec" type="number" class="input-big">
+			<input type="number" is="core-input" id="speed-input">
+		</paper-input-decorator>
+	</div>
+	
+	<!-- GLIMPSE bar-->
+	<br>
+	<div class="glimpse" horizontal layout center-justified>
+		
+		<div>
+		<span class=" glimpse-text hours">{{ totalHours }}</span>
+		</div>
+		<div>
+			<span class="glimpse-text hours vert-divider"> | </span>
+		</div>
+		<div>
+		<a href="/results">
+			<span class="glimpse-text hours show-more-text"> More Results </span>
+		</a>
+		</div>
+	</div>
+	<br>
+	<div class="space-divider" horizontal layout flex center-justified>
+	<core-icon icon="more-horiz"></core-icon>
+	</div>
+</div>
+</div>
+
+<br><br><br><br><br><br><br>
+
 </template>
 
 <!-- SETTINGS -->

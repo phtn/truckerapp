@@ -12,3 +12,4 @@ iron:router
 accounts-ui
 accounts-password
 twbs:bootstrap
+meteorhacks:fast-render

@@ -1,0 +1,26 @@
+#get-btn {
+	background-color: #333;
+	border: 1px solid #4dc47d;
+	color: #4dc47d;
+}
+
+.space-divider {
+	margin: auto 0;
+	color: #333;
+}
+.calc-title {
+	margin-top: -20px;
+}
+.glimpse-text {
+	font-family: 'Roboto', sans-serif;
+	font-size: 1.5em;
+	font-weight: 300;
+	color: #999;
+
+}
+.vert-divider {
+	color: #333 !important;
+}
+.show-more-text {
+	color: #4dc47d !important;
+}
