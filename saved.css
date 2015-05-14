@@ -1,0 +1,47 @@
+.saved-ul {
+	text-decoration: none;
+	margin-left: -41px;
+}
+.saved-icon {
+	color: #4dc47d;
+	margin-left: 7px;
+}
+.saved-li {
+	margin-bottom: 5px;
+}
+.saved-list {
+	border: 1px solid #333;
+	border-radius: 3px;
+	height: 50px;
+}
+.miles-label-saved {
+	font-family: 'Roboto', sans-serif;
+	font-weight: 400;
+	font-size: 1.5em;
+	color: #ccc;
+
+}
+.miles-label-unit-saved {
+	font-family: 'Roboto', sans-serif;
+	font-weight: 400;
+	font-size: 10px;
+	color: #666;
+	margin-left: -10px;
+}
+.total-hours-saved {
+	font-family: 'Roboto', sans-serif;
+	font-weight: 400;
+	font-size: 1.5em;
+	color: #428bca;
+	margin-left: 10px;
+}
+.accept-saved {
+	margin-right: 10px;
+	font-family: 'Roboto', sans-serif;
+	font-weight: 400;
+	font-size: 1.5em;
+	color: #4dc47d;
+}
+.list-label-div {
+	padding-top: 2px;
+}

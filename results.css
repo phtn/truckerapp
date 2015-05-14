@@ -3,27 +3,51 @@
 	margin-right: 50px;
 	font-weight: bold;
 }
-.check-save {
-	color: #34bf49;
-	margin-top: 0px;
-	margin-left: 40px;
-	display: none;
-}
-.drive-toggle {
-	margin: auto 0;
-}
-.team {
-	margin-right: 5px;
-}
+
+
 /* LABELS */
 
-.gen-label {
-	font-weight: bold;
-	margin-right: 0px;
+.miles {
+	margin-top: 12px;
+}
+.miles-label {
+	font-family: 'Roboto', sans-serif;
+	font-weight: 400;
+	font-size: 1em;
+	color: #ccc;
+}
+.miles-label-unit {
+	font-family: 'Roboto', sans-serif;
+	font-weight: 400;
+	font-size: 1em;
 	color: #666;
 }
-.result-labels {
-	width: 125px;
+.results-label {
+	font-family: 'Roboto', sans-serif;
+	font-weight: 100;
+	font-size: 1em;
+	color: #ccc;
+}
+
+.results-text {
+	font-family: 'Roboto', sans-serif;
+	font-weight: 300;
+	font-size: 2em;
+	color: #428bca;
+	margin-left: 25px;
+}
+
+.results-text2 {
+	font-family: 'Roboto', sans-serif;
+	font-weight: 300;
+	font-size: 2em;
+	color: #4dc47d;
+	margin-left: 20px;
+	//border: 1px solid red;
+}
+
+.results-list {
+	border-bottom: 1px solid #333;
 }
 
 /* CALC */
@@ -37,10 +61,56 @@
 .form-control {
 	font-size: 1em;
 }
-.hours {
-	font-family: 'Roboto', sans-serif !important;
-	
-	//font-size: 1em;
-	display: none;
-	margin: 0px 5px;
+.results-text-unit {
+	color: #555;
+	font-family: 'Roboto', sans-serif;
+	font-size: 1.5em;
+	font-weight: 400 !important;
+}
+.dollar-div {
+	width: 20px;
+	margin-left: -20px;
+	//border: 1px solid red;
+
+}
+.driving-as-text {
+	font-family: 'Roboto', sans-serif;
+	font-weight: 400;
+	font-size: 1.5em;
+	/* SOLO color: #ff7243;*/
+	color: #f2af00;
+	margin-left: 25px;
+	//border: 1px solid red;
+}
+#trend-up-arrow {
+	color: #555;
+}
+
+.trend-up {
+	margin-left: -30px !important;
+	//border: 1px solid red;
+}
+.accept-text-value {
+	margin-left: 25px;
+	font-weight: 400 !important;
+}
+
+.progress-div {
+	width: 100px;
+
+}
+.invi {
+	visibility: none;
+}
+
+/* SAVE - TOAST */
+
+#save-toast {
+	left: auto;
+	color: #4dc47d;
+	font-family: 'Roboto', sans-serif;
+	font-weight: 300;
+	font-size: 1.2em;
+	border: 0px solid #428bca;
+	//border-radius: 100px;
 }

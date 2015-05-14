@@ -3,6 +3,13 @@
 	border: 1px solid #4dc47d;
 	color: #4dc47d;
 }
+.hours {
+	font-family: 'Roboto', sans-serif !important;
+	
+	//font-size: 1em;
+	display: none;
+	margin: 0px 5px;
+}
 
 .space-divider {
 	margin: auto 0;
@@ -10,6 +17,11 @@
 }
 .calc-title {
 	margin-top: -20px;
+}
+.input-column {
+	//border: 1px solid red;
+	//margin-left: -50px;
+	//float: left;
 }
 .glimpse-text {
 	font-family: 'Roboto', sans-serif;
@@ -23,4 +35,7 @@
 }
 .show-more-text {
 	color: #4dc47d !important;
+}
+.dark-side {
+	margin-bottom: -6px;
 }

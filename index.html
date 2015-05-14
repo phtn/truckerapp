@@ -34,51 +34,93 @@
 </template>
 
 <template name="landing">
-<div horizontal layout flex>
-<div flex>
- <ul class="top-list land">
+	<div horizontal layout flex class="up-animate">
+		<!-- TOOLS -->
+		<div flex> 
+		 <ul class="top-list land">
 
- 	<li>
- 		<div class="panel panel-primary">
-		  <!-- Default panel contents -->
-		  <div class="panel-heading"><core-icon icon="hardware:keyboard"></core-icon>&nbsp; Trip Calculator &copy;</div>
-
-
-		  <!-- List group -->
-		  <ul class="list-group">
-		    <a href="/calc"><li class="list-group-item">Get Trip Duration Team or Solo  <core-icon class="more-horiz" icon="more-horiz"></core-icon> </li></a>
-		    
-		  </ul>
-		</div>
- 	</li>
+		 	<li>
+		 		<div class="panel panel-primary">
+				  <!-- Default panel contents -->
+				  <div class="panel-heading"><core-icon icon="hardware:memory"></core-icon>&nbsp; Tools</div>
 
 
- </ul>
- </div>
-<div class="spaceBetween"></div>
-<div flex>
- <ul class="top-list land">
+				  <!-- List group -->
+				  <ul class="list-group">
+				    <a href="/calc">
+				    	<li class="list-group-item calc"><core-icon icon="chevron-right"></core-icon>Trip Calculator &copy; </li>
+				    </a>
+				    <a href="/calc">
+				    	<li class="list-group-item calc"><core-icon icon="chevron-right"></core-icon>Weather </li>
+				    </a>
+				  </ul>
+				</div>
+		 	</li>
+		 </ul>
+		</div> 
+		
+		<!-- END OF TOOLS -->
 
- 	<li>
- 		<div class="panel panel-primary">
-		  <!-- Default panel contents -->
-		  <div class="panel-heading"><core-icon icon="device:gps-fixed"></core-icon> &nbsp; Swift Trucker</div>
+		<div class="spaceBetween"></div>
+		<div vertical layout flex>
+			
+			<div>
+			 <ul class="top-list land">
+			 	<li>
+			 		<div class="panel panel-info">
+					  <!-- Default panel contents -->
+					  <div class="panel-heading"><core-icon icon="device:gps-fixed"></core-icon> &nbsp; Swift Trucker</div>
+
+					  <!-- List group -->
+					  <ul class="list-group">
+					    <a href="/calc"><li class="list-group-item">Copy & Paste Swift text message </li></a>
+					    
+					  </ul>
+					</div>
+			 	</li>
+			 </ul>
+			</div>
+			<div class="spaceBetween"></div>
+			<div>
+			 <ul class="top-list land">
+			 	<li>
+			 		<div class="panel panel-warning">
+					  <!-- Default panel contents -->
+					  <div class="panel-heading"><core-icon icon="save"></core-icon>&nbsp; Saved </div>
+
+					  <!-- List group -->
+					  <ul class="list-group">
+					    <li class="list-group-item saved-calc">Calculations <span class="badge">7</span></li>
+					  </ul>
+					</div>
+			 	</li>
+			 </ul>
+			</div>
+			<div class="spaceBetween"></div>
+			<div>
+			 <ul class="top-list land">
+			 	<li>
+			 		<div class="panel panel-success">
+					  <!-- Default panel contents -->
+					  <div class="panel-heading"><core-icon icon="device:gps-fixed"></core-icon> &nbsp; Reports</div>
+
+					  <!-- List group -->
+					  <ul class="list-group">
+					    <a href="/calc"><li class="list-group-item">Get Trip Analysis</li></a>
+					  </ul>
+					</div>
+			 	</li>
+			 </ul>
+			</div>
+
+		</div> <!-- END OF VERTICAL LAYOUT -->
 
 
-		  <!-- List group -->
-		  <ul class="list-group">
-		    <a href="/calc"><li class="list-group-item">Copy & Paste Swift text message <core-icon class="more-horiz" icon="more-horiz"></core-icon></li></a>
-		    
-		  </ul>
-		</div>
- 	</li>
+	</div>
 
+		<div class="spaceBetween"></div>
+		
 
- </ul>
-</div>
- 
- </div>
- 
 </template>
 
 

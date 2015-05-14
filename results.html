@@ -1,4 +1,4 @@
-<template name="results">
+<template name="results0">
 	<div class="panel panel-default results">
 		<div class="panel-heading"><span class="glyphicon glyphicon-stats"></span> Results <span class="glyphicon glyphicon-bookmark pull-right right save-result"></span></div>
 
@@ -26,7 +26,7 @@
 			    	</span>
 					</div>
 					<div flex>
-			    	<span class="label label-primary hours" >
+			    	<span class="label label-primary" >
 			    		{{ totalHours }}
 			    	</span>
 					</div>
@@ -78,4 +78,140 @@
 	    <li class="list-group-item"></li>
 		</ul>
 	</div>
+
+
+	
+
+</template>
+
+<template name="results">
+	<div flex horizontal layout center-justified class="calc-title down-animate">
+	<span class="glyphicon glyphicon-stats"></span> <h4> Results </h4>
+</div>
+<div horizontal layout>
+	<div class="pull-left" flex>
+	<a href="/calc">
+		<paper-icon-button icon="arrow-back" id="back-calc"></paper-icon-button>
+	</a>
+	</div>
+	<div flex class="miles">
+		<span class="miles-label bounce-animate">{{ miles }}</span> 
+		<span class="miles-label-unit">miles</span>
+	</div>
+	<div flex class="miles">
+		<span class="miles-label">{{ speed }}</span>
+		<span class="miles-label-unit">mph</span>
+	</div>
+	<div class="pull-right">
+		<paper-icon-button icon="save" id="save-results" style="color: #428bca;"></paper-icon-button>
+	</div>
+</div>
+<br>
+<div class="left-animate">
+<div vertical layout>
+
+	<div horizontal layout class="left-animate results-list" center>
+		<div flex>
+			<span class="results-label">TOTAL HOURS </span>
+		</div>
+		<div class="dollar-div trend-up">
+			<core-icon icon="device:access-time" id="trend-up-arrow"></core-icon>
+		</div>
+		<div flex>
+			<span class="results-text">{{ totalHours }}</span>
+		</div>
+	</div>
+
+	<div horizontal layout class="left-animate results-list" center>
+
+		<div flex>
+			<span class="results-label">TRIP DURATION </span>
+		</div>
+		<div class="dollar-div trend-up">
+			<core-icon icon="device:access-time" id="trend-up-arrow"></core-icon>
+		</div>
+		<div flex>
+			<span class="results-text">{{ tripDuration }}</span>
+		</div>
+	</div>
+
+	<div horizontal layout class="left-animate results-list" center>
+
+		<div flex>
+			<span class="results-label">DRIVING AS </span>
+		</div>
+		<div class="dollar-div trend-up">
+			<core-icon icon="notification:drive-eta" id="trend-up-arrow"></core-icon>
+		</div>
+		<div flex>
+			<span class="driving-as-text" id="driving-value">{{ drivingAs }}</span>
+		</div>
+	</div>              
+
+	<div horizontal layout class="left-animate results-list" center>
+		<div flex>
+			<span class="results-label">TRIP VALUE </span>
+		</div>
+		<div class="dollar-div">
+			<span class="results-text-unit">$</span>
+		</div>
+		<div flex>
+			<span class="results-text2">3,267</span>
+		</div>
+	</div>
+
+	<div horizontal layout class="left-animate results-list" center>
+		<div flex>
+			<span class="results-label">HOURLY RATE </span>
+		</div>
+		<div class="dollar-div">
+			<span class="results-text-unit">$</span>
+		</div>
+		<div flex>
+			<span class="results-text2">25.18</span>
+		</div>
+	</div>
+	
+	<div horizontal layout class="left-animate results-list" center>
+		<div flex>
+			<span class="results-label">ACCEPT  </span>
+		</div>
+		<div class="dollar-div trend-up">
+			<core-icon icon="trending-up" id="trend-up-arrow"></core-icon>
+		</div>
+		<div flex>
+			<span class="results-text2 accept-text-value">87</span>
+		</div>
+		
+	</div>
+
+	<br>
+	
+	<br>
+	<div class="space-divider" horizontal layout flex center-justified>
+	<core-icon icon="more-horiz"></core-icon>
+	</div>
+</div>
+</div>
+
+
+<paper-toast text="RESULTS SAVED " id="save-toast"> 
+	
+	<span class="glyphicon glyphicon-ok-sign"></span>
+
+</paper-toast>
+
+
+<!-- TOGGLE
+	<div horizontal layout class="left-animate results-list" center>
+		<div flex>
+			<span class="results-label">DRIVING AS </span>
+		</div>
+		<div flex>
+			<span class="results-text">TEAM</span>
+			<paper-toggle-button id="drive-toggle-button" checked="false"></paper-toggle-button>
+			<span class="results-text">SOLO</span>
+		</div>
+	</div>
+	-->
 </template>

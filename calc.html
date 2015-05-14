@@ -34,11 +34,19 @@
 
 <template name="calc">
 <div flex horizontal layout center-justified class="calc-title down-animate">
-	<core-icon icon="hardware:keyboard"></core-icon><h4> Trip Calculator &copy;</h4>
+	
+
+		<core-icon icon="hardware:keyboard"></core-icon>
+
+
+		<h4> Trip Calculator &copy;</h4>
+
 </div>
+
+
 <br>
 <div class="left-animate">
-<div vertical layout>
+<div vertical layout class="input-column">
 	<div class="left-animate">
 		<paper-input-decorator floatingLabel label="Distance in miles" id="distance-input-dec" type="number" class="input-big">
 			<input type="number" is="core-input" id="distance-input" class="">
@@ -54,6 +62,9 @@
 	<br>
 	<div class="glimpse" horizontal layout center-justified>
 		
+		<div id="clock">
+			<core-icon icon="device:access-time" class="hours dark-side" ></core-icon>
+		</div>
 		<div>
 		<span class=" glimpse-text hours">{{ totalHours }}</span>
 		</div>
@@ -71,9 +82,11 @@
 	<core-icon icon="more-horiz"></core-icon>
 	</div>
 </div>
-</div>
 
 <br><br><br><br><br><br><br>
+</div>
+
+<paper-toast text="Start by tapping 'Distance in miles' " id="calc-wc" duration="5000"> </paper-toast>
 
 </template>
 

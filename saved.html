@@ -1,0 +1,52 @@
+<template name="saved">
+
+	<div flex horizontal layout center-justified class="calc-title down-animate">
+	<core-icon icon="save"></core-icon> <h4> Saved </h4>
+</div>
+<div horizontal layout>
+	<div class="pull-left" flex>
+		<paper-icon-button icon="arrow-back" id="exit"></paper-icon-button>
+	</div>
+	<div class="miles" flex>
+		<span class="miles-label">ALL</span>
+	</div>
+	
+	<div class="pull-right">
+		<paper-icon-button icon="filter-list" id="filter-saved"></paper-icon-button>
+	</div>	
+</div>
+
+<br>
+<div class="left-animate">
+<div vertical layout>
+	<ul class="saved-ul">
+		{{#each saved}}
+		<li class="saved-li">
+			<paper-shadow z="1">
+				<div horizontal layout class="left-animate saved-list" center>
+					<div class="" >
+						<core-icon icon="apps" class="saved-icon"></core-icon>
+					</div>
+					<div class="list-label-div">
+						<span class="miles-label-saved">{{ saveMiles }}</span> 
+						<span class="miles-label-unit-saved">miles</span>
+					</div>
+					<div class="list-label-div">
+						<span class="miles-label-saved">{{ saveSpeed }}</span>
+						<span class="miles-label-unit-saved">mph</span>
+					</div>
+					<div flex class="list-label-div">
+						<span class="total-hours-saved">2d 23h 46m</span>
+					</div>
+					<div class="list-label-div">
+						<span class="accept-saved">87</span>
+					</div>
+				</div>
+			</paper-shadow>
+		</li>
+
+		{{/each}}
+	</ul>
+</div>
+</div>
+</template>
