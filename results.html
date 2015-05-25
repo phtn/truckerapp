@@ -1,111 +1,36 @@
-<template name="results0">
-	<div class="panel panel-default results">
-		<div class="panel-heading"><span class="glyphicon glyphicon-stats"></span> Results <span class="glyphicon glyphicon-bookmark pull-right right save-result"></span></div>
-
-		<ul class="list-group">
-			<li class="list-group-item">
-				<div horizontal layout center>
-					<div class="result-labels">
-		    		<span class="gen-label">Driving as: </span>
-		    	</div>
-		    	<div flex>
-		    		<span class="team"> Team </span>
-		    		<paper-toggle-button id="drive-toggle-button" checked="false"></paper-toggle-button>
-		    		<span class="solo"> Solo </span>
-		    	</div>
-		    	<div>
-		    		<span class="glyphicon glyphicon-ok pull-right check-save"></span>
-		    	</div>
-		    </div>
-		  </li>
-	    <li class="list-group-item">
-				<div horizontal layout center>
-					<div class="result-labels">
-			    	<span class="gen-label">
-			    		Total Hours:
-			    	</span>
-					</div>
-					<div flex>
-			    	<span class="label label-primary" >
-			    		{{ totalHours }}
-			    	</span>
-					</div>
-				</div>
-	    </li>
-	    <li class="list-group-item">
-				<div horizontal layout>
-					<div class="result-labels">
-			    	<span class="gen-label">
-			    		Trip Duration:
-			    	</span>
-					</div>
-					<div flex>
-						<span class="label label-default hours" >
-							{{ tripDuration }}
-						</span>
-					</div>
-				</div>
-	    </li>
-	    <li class="list-group-item">
-				<div horizontal layout>
-					<div class="result-labels">
-			    	<span class="gen-label">
-			    		Total Value:
-			    	</span>
-					</div>
-					<div flex>
-						<span class="label label-warning hours" >
-							Sign in to set Mile Rate
-						</span>
-					</div>
-				</div>
-	    </li>
-	    <li class="list-group-item">
-				<div horizontal layout>
-					<div class="result-labels">
-			    	<span class="gen-label">
-			    		Hourly Rate:
-			    	</span>
-					</div>
-					<div flex>
-						<span class="label label-warning hours" >
-							Sign in to set Mile Rate
-						</span>
-					</div>
-				</div>
-	    </li>
-
-	    <li class="list-group-item"></li>
-		</ul>
-	</div>
-
-
-	
-
-</template>
+<!-- RESULTS -->
 
 <template name="results">
 	<div flex horizontal layout center-justified class="calc-title down-animate">
 	<span class="glyphicon glyphicon-stats"></span> <h4> Results </h4>
 </div>
-<div horizontal layout>
-	<div class="pull-left" flex>
+<div horizontal layout center-justified class="topbar-container">
+	<div class="pull-left results-icon topbar" flex one center-justified>
 	<a href="/calc">
 		<paper-icon-button icon="arrow-back" id="back-calc"></paper-icon-button>
 	</a>
 	</div>
-	<div flex class="miles">
-		<span class="miles-label bounce-animate">{{ miles }}</span> 
-		<span class="miles-label-unit">miles</span>
+	<div flex class="topbar" two center-justified>
+		<span class="topbar-label" >{{ miles }}</span> 
+		<span class="topbar-label-unit">miles</span>
 	</div>
-	<div flex class="miles">
-		<span class="miles-label">{{ speed }}</span>
-		<span class="miles-label-unit">mph</span>
+	<div flex class="topbar" two center-justified>
+		<span class="topbar-label">{{ speed }}</span>
+		<span class="topbar-label-unit">mph</span>
 	</div>
-	<div class="pull-right">
+	<div flex class="topbar" two center-justified>
+		<span class="topbar-label-unit">$</span>
+	{{#each ratePerMile}}
+		<span class="topbar-label">{{ rate }}</span>
+	{{/each}}
+		<span class="topbar-label-unit">/mile</span>
+	</div>
+	<div flex class="pull-right results-icon topbar" one center-justified>
 		<paper-icon-button icon="save" id="save-results" style="color: #428bca;"></paper-icon-button>
 	</div>
 </div>
+<paper-shadow z="1">
+</paper-shadow>
 <br>
 <div class="left-animate">
 <div vertical layout>
@@ -147,7 +72,7 @@
 			<span class="driving-as-text" id="driving-value">{{ drivingAs }}</span>
 		</div>
 	</div>              
-
+	{{#if currentUser}}
 	<div horizontal layout class="left-animate results-list" center>
 		<div flex>
 			<span class="results-label">TRIP VALUE </span>
@@ -156,7 +81,9 @@
 			<span class="results-text-unit">$</span>
 		</div>
 		<div flex>
-			<span class="results-text2">3,267</span>
+			{{#each ratePerMile }}
+			<span class="results-text2 rate">{{ calcTripValue rate }} </span>
+			{{/each}}
 		</div>
 	</div>
 
@@ -168,7 +95,7 @@
 			<span class="results-text-unit">$</span>
 		</div>
 		<div flex>
-			<span class="results-text2">25.18</span>
+			<span class="results-text2" id="hourlyRate">{{ calcPerHour }}</span>
 		</div>
 	</div>
 	
@@ -184,7 +111,7 @@
 		</div>
 		
 	</div>
-
+	{{/if}}
 	<br>
 	
 	<br>

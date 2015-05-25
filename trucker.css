@@ -39,6 +39,9 @@ button:focus {outline:0;}
 	margin-left: 15px;
 
 }
+.sign {
+	color: #555;
+}
 .content {
 	margin: 100px 15px 0px; 
 
@@ -166,6 +169,10 @@ input {
 	font-size: 1.8em;
 	font-weight: 300;
 	text-indent: 10px;
+}
+.calc {
+	border-bottom: 1px solid #333;
+	margin-bottom: 0px;
 }
 
 

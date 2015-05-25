@@ -1,0 +1,30 @@
+.login {
+	background-color: #444 !important;
+}
+.dollar {
+	color: #555;
+	font-family: 'Roboto', sans-serif;
+	font-weight: bolder;
+	font-size: 2.5em;
+	padding-top: 20px;
+}
+.dolla-div {
+	margin-top: 46px;
+}
+.preferences-div {
+	margin-right: 30px;
+}
+input#rate-input {
+	font-size: 2.5em;
+	color: #4dc47d;
+}
+.save-rate-label {
+	font-size: 1.5em;
+	color: #428bca;
+}
+#save-rate-icon {
+	color: #428bca;
+}
+#update-rate-toast span {
+	color: #4dc47d;
+}

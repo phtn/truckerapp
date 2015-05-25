@@ -7,20 +7,35 @@
 
 /* LABELS */
 
-.miles {
-	margin-top: 12px;
+.topbar-container {
+	vertical-align: middle;
+	height: 50px;
+	border-bottom: 1px solid #333;
+	box-shadow: 0 4px 2px -2px #111;
 }
-.miles-label {
+.topbar {
+	line-height: 4em;
+	//border: 1px solid red;
+	text-align: center;
+	vertical-align: middle;
+	overflow: hidden;
+}
+.topbar-label {
+	margin-top: 10px;
 	font-family: 'Roboto', sans-serif;
 	font-weight: 400;
 	font-size: 1em;
 	color: #ccc;
 }
-.miles-label-unit {
+.topbar-label-unit {
+	margin-top: 10px;
 	font-family: 'Roboto', sans-serif;
 	font-weight: 400;
 	font-size: 1em;
 	color: #666;
+}
+.results-icon {
+	margin-top: 7px;
 }
 .results-label {
 	font-family: 'Roboto', sans-serif;
@@ -49,6 +64,7 @@
 .results-list {
 	border-bottom: 1px solid #333;
 }
+
 
 /* CALC */
 .get {
@@ -105,12 +121,14 @@
 
 /* SAVE - TOAST */
 
-#save-toast {
-	left: auto;
+#save-toast span{
 	color: #4dc47d;
-	font-family: 'Roboto', sans-serif;
-	font-weight: 300;
-	font-size: 1.2em;
-	border: 0px solid #428bca;
-	//border-radius: 100px;
+}
+#save-results {
+	margin-left: 0px;
+}
+hr {
+	margin-top: 0px;
+	border-color: #ccc;
+	background-color: #ccc;
 }

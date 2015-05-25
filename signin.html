@@ -1,4 +1,4 @@
-<template name="sign-in">
+<template name="sign_in">
 <div class="down-animate">
 	<div class="panel panel-default">
 		  <!-- Default panel contents -->
@@ -7,45 +7,37 @@
 
 		<!-- List group -->
 		<ul class="list-group">
-		    
-		    <li class="list-group-item">
-				<div class="down-animate sign">{{> loginButtons}}</div>	    	
+		    <li class="list-group-item login">
+					<div class="down-animate sign">{{> loginButtons }}</div>	    	
 		    </li>
-		  </ul>
+		    <br><br><br>
+		    {{#if currentUser}}
+		    <li>
+		    	<div class="preferences-div" horizontal layout>
+			    	<div center-justified class="dolla-div"><span class="dollar">$</span></div>
+			    	<div flex>
+						<paper-input-decorator floatingLabel label="set rate per mile" id="rate-per-mile" type="number" class="input-big">
+							<input type="number" is="core-input" id="rate-input" class="">
+						</paper-input-decorator>
+					</div>
+				</div>
+		    </li>
+		    <li>
+		    	<div horizontal layout center-justified>
+		    		<paper-button id="save-preferences"><span class="save-rate-label">SAVE</span><core-icon icon="save" id="save-rate-icon"></core-icon></paper-button>
+		    	</div>
+		    </li>
+		    {{/if}}
+		    
+		</ul>
 	</div>
+	<br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br>
 </div>
+<paper-toast text="UPDATE SUCCESFUL " id="update-rate-toast"> 
+	
+	<span class="glyphicon glyphicon-ok-sign"></span>
 
+</paper-toast>
 
 </template>
 
-<template name="not-in">
-	<div class="panel panel-default">
-		  <!-- Default panel contents -->
-		  <div class="panel-heading"><span class="glyphicon glyphicon-barcode"></span> Not In <a href="/"><span class="glyphicon glyphicon-remove pull-right right"></span></a></div>
-		  
-
-		<!-- List group -->
-		<ul class="list-group">
-		    
-		    <li class="list-group-item">
-				<div class="down-animate sign">Pls log in</div>	    	
-		    </li>
-		  </ul>
-	</div>
-</template>
-
-<template name="user-settings">
-	<div class="panel panel-default">
-		  <!-- Default panel contents -->
-		  <div class="panel-heading"><span class="glyphicon glyphicon-barcode"></span> User Settings <a href="/"><span class="glyphicon glyphicon-remove pull-right right"></span></a></div>
-		  
-
-		<!-- List group -->
-		<ul class="list-group">
-		    
-		    <li class="list-group-item">
-				<div class="down-animate sign">Profile Picture</div>	    	
-		    </li>
-		  </ul>
-	</div>
-</template>

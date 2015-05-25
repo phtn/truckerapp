@@ -4,10 +4,6 @@ paper-icon-button#exit {
     color: #428bca;
 }
 
-paper-toggle-button::shadow .toggle-button {
-  background-color: #428bca;
-}
-
 paper-input {
 	color: #ccc;
 	font-family: 'Roboto', sans-serif;
@@ -25,5 +21,7 @@ paper-input-decorator /deep/ ::-webkit-input-placeholder {
     font-size: 1em;
     width: auto;
 }
-
+paper-icon-button#save-preferences {
+    color: #428bca;
+} 
 
