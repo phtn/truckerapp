@@ -20,7 +20,7 @@ if (Meteor.isClient) {
   // LANDING *** helpers
   Template.landing.helpers({
     save_count: function() {
-      return Saved.find().count();
+      return  Profile.find({userID: Meteor.userId()}).count();
     }
   });
 
@@ -108,11 +108,7 @@ if (Meteor.isClient) {
   // SAVED *** HELPERS
   Template.saved.helpers({
     saved: function() {
-    return Saved.find().fetch().reverse();
-    },
-    moment: function() {
-    var d = Saved.find({saveDate: {$exists: true}});
-    return d;
+      return  Saved.find({userID: Meteor.user()._id}).fetch().reverse();
     }
   }); 
 
@@ -167,7 +163,6 @@ if (Meteor.isClient) {
 
       Session.set('getTripDuration', (getDurationCalc(Session.get('getRawHours'), driveHours)));
       //console.log(driveHours);
-      Session.set('currUser', Meteor.userId());
 
     } else if (speedValue.length == 1) {
         $('.hours').fadeOut('slow');
