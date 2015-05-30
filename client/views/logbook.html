@@ -1,0 +1,92 @@
+<template name="logbook">
+<div flex horizontal layout center-justified class="down-animate">
+	<span class="glyphicon glyphicon-stats"></span> <h4> Log Book </h4>
+</div>
+<div horizontal layout center-justified class="topbar-container">
+	<div class="pull-left results-icon topbar" flex one center-justified>
+	<a href="/">
+		<paper-icon-button icon="arrow-back" id="back-calc"></paper-icon-button>
+	</a>
+	</div>
+	<div flex class="topbar" two center-justified>
+		
+	</div>
+	<div flex class="topbar" two center-justified>
+	</div>
+	{{#if currentUser}}	
+	<div flex class="pull-right results-icon topbar" one center-justified>
+		<paper-icon-button icon="add" id="add" style="color: #428bca;"></paper-icon-button>
+	</div>
+	{{/if}}
+
+	{{#unless currentUser}}
+	<div flex class="pull-right results-icon topbar" one center-justified>
+		<paper-icon-button icon="add" id="add-not-signed" style="color: #444;"></paper-icon-button>
+	</div>
+	{{/unless}}
+</div>
+
+<br>
+
+<div class="left-animate">
+<div vertical layout>
+
+	<div horizontal layout class="left-animate log-list">
+		<div class="log-panel" center-justified flex one>
+			<core-icon icon="event" class="log-date-icon"></core-icon>
+		</div>
+		<div class="log-panel" center-justified flex two>
+			<span class="results-label">MILEAGE</span>
+		</div>
+		<div class="log-panel" center-justified flex two>
+			<span class="results-label">DRIVING</span>
+		</div>
+		<div class="log-panel" center-justified flex two>
+			<span class="results-label">ON-DUTY</span>
+		</div>
+		<div class="log-panel" center-justified flex one>
+			<span class="results-label">OFF</span>
+		</div>
+	</div>
+	{{#unless currentUser}}
+	<div horizontal layout class="right-animate results-list" center-justified>
+		
+		<div class="result-sign-in" center-justified>
+			<paper-button class="result-sign-in-text" id="log-sign">Sign in to view your logs <core-icon icon="chevron-right"></core-icon></paper-button>
+		</div>
+		
+	</div>
+	{{/unless}}
+
+	{{#if currentUser}}
+		<ul class="ul-logs">
+			<li class="li-logs">
+				<div horizontal layout class="left-animate log-list">
+					<div class="log-panel" center-justified flex one>
+						<span class="logs-label">4/27</span>
+					</div>
+					<div class="log-panel" center-justified flex two>
+						<span class="logs-label">450</span>
+					</div>
+					<div class="log-panel" center-justified flex two>
+						<span class="logs-label">78</span>
+					</div>
+					<div class="log-panel" center-justified flex two>
+						<span class="logs-label">ON-DUTY</span>
+					</div>
+					<div class="log-panel" center-justified flex one>
+						<span class="logs-label">OFF</span>
+					</div>
+				</div>
+			</li>
+		</ul>
+	{{/if}}
+</div>
+</div>
+
+<paper-toast text="YOU MUST BE SIGNED IN TO ADD LOGS " id="error-add-log"> 
+	
+	<span class="glyphicon glyphicon-alert error"></span>
+
+</paper-toast>
+</template>

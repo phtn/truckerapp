@@ -18,19 +18,25 @@
 		<span class="topbar-label">{{ speed }}</span>
 		<span class="topbar-label-unit">mph</span>
 	</div>
+	{{#if currentUser}}
 	<div flex class="topbar" two center-justified>
 		<span class="topbar-label-unit">$</span>
-	{{#each ratePerMile}}
+		{{#each getProfile}}
 		<span class="topbar-label">{{ rate }}</span>
-	{{/each}}
+		{{/each}}
 		<span class="topbar-label-unit">/mile</span>
 	</div>
 	<div flex class="pull-right results-icon topbar" one center-justified>
 		<paper-icon-button icon="save" id="save-results" style="color: #428bca;"></paper-icon-button>
 	</div>
+	{{/if}}
+	{{#unless currentUser}}
+		<div flex class="pull-right results-icon topbar" one center-justified>
+			<paper-icon-button icon="save" id="save-sign" style="color: #444;"></paper-icon-button>
+		</div>
+	{{/unless}}
 </div>
-<paper-shadow z="1">
-</paper-shadow>
+
 <br>
 <div class="left-animate">
 <div vertical layout>
@@ -46,7 +52,16 @@
 			<span class="results-text">{{ totalHours }}</span>
 		</div>
 	</div>
-
+	{{#unless currentUser}}
+	<div horizontal layout class="right-animate results-list" center-justified>
+		
+		<div class="result-sign-in" center-justified>
+			<paper-button class="result-sign-in-text" id="result-sign">Sign in for more results <core-icon icon="chevron-right"></core-icon></paper-button>
+		</div>
+		
+	</div>
+	{{/unless}}
+	{{#if currentUser}}
 	<div horizontal layout class="left-animate results-list" center>
 
 		<div flex>
@@ -69,10 +84,12 @@
 			<core-icon icon="notification:drive-eta" id="trend-up-arrow"></core-icon>
 		</div>
 		<div flex>
-			<span class="driving-as-text" id="driving-value">{{ drivingAs }}</span>
+			{{#each getProfile}}
+			<span class="driving-as-text" id="driving-value">{{ getDrive drive }}</span>
+			{{/each}}
 		</div>
 	</div>              
-	{{#if currentUser}}
+	
 	<div horizontal layout class="left-animate results-list" center>
 		<div flex>
 			<span class="results-label">TRIP VALUE </span>
@@ -81,7 +98,7 @@
 			<span class="results-text-unit">$</span>
 		</div>
 		<div flex>
-			{{#each ratePerMile }}
+			{{#each getProfile }}
 			<span class="results-text2 rate">{{ calcTripValue rate }} </span>
 			{{/each}}
 		</div>
@@ -128,17 +145,10 @@
 
 </paper-toast>
 
+<paper-toast text="YOU MUST BE SIGNED IN TO SAVE THIS" id="error-save"> 
+	
+	<span class="glyphicon glyphicon-alert error"></span>
 
-<!-- TOGGLE
-	<div horizontal layout class="left-animate results-list" center>
-		<div flex>
-			<span class="results-label">DRIVING AS </span>
-		</div>
-		<div flex>
-			<span class="results-text">TEAM</span>
-			<paper-toggle-button id="drive-toggle-button" checked="false"></paper-toggle-button>
-			<span class="results-text">SOLO</span>
-		</div>
-	</div>
-	-->
+</paper-toast>
+
 </template>

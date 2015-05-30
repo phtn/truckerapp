@@ -1,6 +1,12 @@
 .login {
 	background-color: #444 !important;
 }
+.h3-edit-pref {
+	color: #428bca;
+	margin-left: 15px;
+	font-family: 'Roboto', sans-serif;
+	font-weight: 100;
+}
 .dollar {
 	color: #555;
 	font-family: 'Roboto', sans-serif;
@@ -10,6 +16,7 @@
 }
 .dolla-div {
 	margin-top: 46px;
+	margin-left: 5px;
 }
 .preferences-div {
 	margin-right: 30px;
@@ -17,6 +24,14 @@
 input#rate-input {
 	font-size: 2.5em;
 	color: #4dc47d;
+	margin-left: 5px;
+}
+.pref-drive-container {
+	border-bottom: 1px solid #666;
+	line-height: 4em;
+	vertical-align: middle;
+	margin: 0px 15px 0px;
+
 }
 .save-rate-label {
 	font-size: 1.5em;
@@ -25,6 +40,7 @@ input#rate-input {
 #save-rate-icon {
 	color: #428bca;
 }
-#update-rate-toast span {
+
+#update-preferences-toast span {
 	color: #4dc47d;
 }

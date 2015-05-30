@@ -64,6 +64,15 @@
 .results-list {
 	border-bottom: 1px solid #333;
 }
+.result-sign-in {
+	line-height: 5em;
+	margin: 0 auto;
+}
+.result-sign-in-text {
+	color: #4dc47d;
+	font-family: 'Roboto', sans-serif;
+	margin: 0 auto;
+}
 
 
 /* CALC */

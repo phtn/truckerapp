@@ -1,11 +1,10 @@
-Saved = new Mongo.Collection('saved');
-Profile = new Mongo.Collection('profile');
-
-
-if (Meteor.isClient) {
 
 
 
+
+  //SUBSCRIBE
+  Meteor.subscribe('showSavedResults');
+  Meteor.subscribe('showProfile');
   // HOME *** events
   Template.home.events({
     'click .sign': function() {
@@ -20,24 +19,24 @@ if (Meteor.isClient) {
   // LANDING *** helpers
   Template.landing.helpers({
     save_count: function() {
-      return  Profile.find({userID: Meteor.userId()}).count();
+      return Saved.find({userID: Meteor.userId()}).count();
     }
   });
 
   // LANDING *** events
   Template.landing.events({
     'click .calc': function() {
-      //toast(document.querySelector('#calc-wc'));
-      //console.log('toast');
     },
     'click .saved-calc': function() {
-      Router.go('/saved');
+      Router.go('/saved')
     }, 
     'click .calc': function() {
       Router.go('/calc')
+    },
+    'click .log': function() {
+      Router.go('/logbook')
     }
   });
-
 
   // RESULTS *** helpers
   Template.results.helpers({
@@ -56,31 +55,30 @@ if (Meteor.isClient) {
     speed: function(){
       return Session.get('getSpeed');
     },
-    ratePerMile: function() {
+    getProfile: function() {
       return  Profile.find({userID: Meteor.user()._id}).fetch();
     }
   });
 
+  Template.results.rendered = function() {
+    Session.set('getDriver',$('#driving-value').text());
+    Session.set('getTripDuration', getDurationCalc(Session.get('getRawHours'), getDriveHours(Session.get('getDriver'))));
+  };
+
   // RESULTS *** events
   Template.results.events({
     'click #save-results': function(){
-      Meteor.call('saveResults', userID, saveMiles, saveSpeed, saveTripDuration, saveTotalHours, saveDate, saveTripValue, savePerHour);
+      Meteor.call('saveResults', Meteor.userId(), Session.get('getMiles'), Session.get('getSpeed'), Session.get('getTripDuration'), Session.get('getTotalHours'), Session.get('getTripValue'), Session.get('getPerHour'));
+      console.log(Meteor.userId());
+      //delete Session.keys['getMiles'];
       toast(document.querySelector('#save-toast'));
     },
-    'click #driving-value': function(){
-      
-      if (Session.get('getDrivingAs') == 'Team'){
-        Session.set('getDrivingAs', 'Solo');
-        return Session.set('getTripDuration', getDurationCalc(Session.get('getRawHours'), 11));
-      } else {
-        Session.set('getDrivingAs', 'Team');
-        return Session.set('getTripDuration', getDurationCalc(Session.get('getRawHours'), 24));
-      }
-
+    'click #save-sign': function() {
+      toast(document.querySelector('#error-save'));
     },
-    'click #hourlyRate': function() {
-      Meteor.call('removeHourlyRate', this._id);
-    }
+    'click #result-sign': function() {
+      Router.go('/signin')
+    } 
   });
 
   
@@ -105,35 +103,56 @@ if (Meteor.isClient) {
     }
   });
 
+
   // SAVED *** HELPERS
   Template.saved.helpers({
     saved: function() {
-      return  Saved.find({userID: Meteor.user()._id}).fetch().reverse();
+     return  Saved.find({userID: Meteor.user()._id}).fetch().reverse();
+     
     }
   }); 
 
-  // SAVED *** EVENTS
+   // SAVED *** EVENTS
   Template.saved.events({
     'click #exit': function() {
     Router.go('/');
     },
     'click .saved-li': function() {
       Meteor.call('removeSaved', this._id);
+    },
+    'click #saved-sign': function() {
+      Router.go('/signin');
     }
   });
 
   // SIGN *** EVENTS
   Template.sign_in.events({
     'click #save-preferences': function() {
-    console.log(Meteor.userId());
-    Meteor.call('setRate', Meteor.userId(), $('#rate-input').val())
-    toast(document.querySelector('#update-rate-toast'));
+    Meteor.call('setPreferences', Meteor.userId(), $('#rate-input').val(), $('.drive-toggle').prop('checked'))
+    toast(document.querySelector('#update-preferences-toast'));
     }
   });
 
+  //SIGN *** HELPERS
+  Template.sign_in.helpers({
+    preferences: function() {
+      return  Profile.find({userID: Meteor.user()._id}).fetch();
+      Session.set('drive', $('.drive-toggle').prop('checked'));
+    },
 
+  });
 
-  Session.set('getDrivingAs', 'Team');
+  //LOG *** EVENTS
+  Template.logbook.events({
+    'click #log-sign': function() {
+      Router.go('/signin');
+    },
+    'click #add-not-signed': function() {
+     toast(document.querySelector('#error-add-log')); 
+    }
+  });
+
+  
 
   var calc = function(){
     // Total Hours
@@ -142,7 +161,10 @@ if (Meteor.isClient) {
         rawHour = distanceValue / speedValue,
         wholeHour = Math.floor(rawHour),
         minDecimal = (rawHour % 1),
-        wholeMin = Math.floor(minDecimal * 60);
+        wholeMin = Math.floor(minDecimal * 60),
+        driveValue = $('#driving-value').text();
+
+    
 
     if (speedValue.length == 2){
       $('.hours').fadeIn('slow');
@@ -154,14 +176,8 @@ if (Meteor.isClient) {
 
       // glimpse text
       Session.set('getTotalHours', wholeHour + 'h ' + wholeMin + 'm' );
-      
-      if (Session.get('getDrivingAs') == 'Team'){
-        var driveHours = 24;
-      } else {
-        var driveHours = 11;
-      }
 
-      Session.set('getTripDuration', (getDurationCalc(Session.get('getRawHours'), driveHours)));
+      
       //console.log(driveHours);
 
     } else if (speedValue.length == 1) {
@@ -169,6 +185,13 @@ if (Meteor.isClient) {
       }
   } // end of keyup #speed-input
 
+  var getDriveHours = function(drive) {
+    if (drive == 'Team'){
+      return 24;
+    } else if( drive == 'Solo') {
+      return 11;
+    }
+  }
 
   var getDurationCalc = function (raw, driveHours){
 
@@ -185,6 +208,8 @@ if (Meteor.isClient) {
     return teamTime;
   } //END OF GETDURATIONCALC
 
+
+
   //TOAST
     var toast = function(el){
       el.show();
@@ -195,34 +220,34 @@ if (Meteor.isClient) {
       if(Meteor.userId()){
         //Session.set('userID', Meteor.userId());
         Meteor.call('insertUser', Meteor.userId());
-        //console.log(Meteor.userId());
       }
   });
 
   //CALC RATE TRIP VALUE
-    Handlebars.registerHelper('calcTripValue', function(rate) {
+    UI.registerHelper('calcTripValue', function(rate) {
       var calcRate = Session.get('getMiles') * parseFloat(rate);
       Session.set('getTripValue', calcRate);
       return calcRate.toFixed(2);
     });
 
-    Handlebars.registerHelper('calcPerHour', function() {
+    UI.registerHelper('calcPerHour', function() {
       var calcPerHour = parseFloat(Session.get('getTripValue')) / Session.get('getRawHours');
       Session.set('getPerHour', calcPerHour);
       return calcPerHour.toFixed(2);
     });
+
+    UI.registerHelper('getDrive', function(drive) {
+      var driveText = '';
+      if(drive) {
+        driveText =  'Solo';
+      } else {
+        driveText = 'Team'
+      }
+      return driveText;
+      
+    });
     
-  //RESULTS VALUES
-  var userID = Meteor.userId(),
-      saveMiles = Session.get('getMiles'),
-      saveSpeed = Session.get('getSpeed'),
-      saveTripDuration = Session.get('getTripDuration'),
-      saveTotalHours = Session.get('getTotalHours'),
-      saveDate = new Date(),
-      saveTripValue = Session.get('getTripValue');
-      savePerHour = Session.get('getPerHour');
-  
-} //END OF CLIENT
+
 
 
 

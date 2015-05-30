@@ -1,0 +1,31 @@
+.log-panel {
+	//border: 1px solid red;
+	margin: 0 auto;
+	text-align: center;
+}
+.log-date-icon {
+	margin-top: -5px;
+	color: #666;
+}
+.log-list {
+	border-bottom: 1px solid #333;
+}
+.ul-logs {
+	padding: 0;
+	list-style-type: none;
+}
+.li-logs {
+	line-height: 2em;
+	//padding-left: -5px;
+	list-style-type: none;
+	margin-left: -7px;
+}
+.logs-label {
+	font-family: 'Roboto', sans-serif;
+	font-weight: 100;
+	font-size: 1em;
+	color: #4dc47d;
+}.error {
+	margin-right: 2px;
+	color: #f57d00;
+}

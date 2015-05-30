@@ -1,6 +1,18 @@
 
+//Profile = new Mongo.Collection('profile');
+  
   Meteor.startup(function () {
 
+  });
+  //PUBLISH
+  Meteor.publish('showSavedResults', function() {
+  	return Saved.find();
+  });
+  Meteor.publish('showProfile', function() {
+  	return Profile.find();
+  });
+  Meteor.publish('showLogs', function() {
+    return Logs.find();
   });
 
   //METHODS
@@ -9,22 +21,20 @@
   	removeSaved: function(id) {
   		Saved.remove(id);
   	},
-  	saveResults: function(userID, saveMiles, saveSpeed, saveTripDuration, saveTotalHours, saveDate, saveTripValue, savePerHour) {
+  	saveResults: function(userID, saveMiles, saveSpeed, saveTripDuration, saveTotalHours, saveTripValue, savePerHour) {
   		Saved.insert({
   			userID: userID,
 	    	saveMiles: saveMiles,
 	    	saveSpeed: saveSpeed,
 	    	saveTripDuration: saveTripDuration,
 	    	saveTotalHours: saveTotalHours,
-	    	saveDate: saveDate,
 	    	saveTripValue: saveTripValue,
-	    	savePerHour: savePerHour
+	    	savePerHour: savePerHour,
+	    	saveDate: new Date()
       });
   	},
+  	
   	//PROFILE
-  	updateRate: function(rate) {
-  		Profile.update({code: 1}, {rate: rate});
-  	},
   	removeHourlyRate: function(id) {
   		Profile.remove(id);
   	},
@@ -35,12 +45,12 @@
   			{ upsert: true }
   		);
   	},
-  	setRate: function(id, rate) {
+  	setPreferences: function(id, rate, drive) {
   		Profile.update(
   			{ userID: id },
-  			{ userID: id , rate: rate},
+  			{ userID: id , rate: rate, drive: drive},
   			{ upsert: true }
-		);
+		  );
   	}
   });
 

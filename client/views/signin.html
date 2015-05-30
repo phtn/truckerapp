@@ -10,30 +10,43 @@
 		    <li class="list-group-item login">
 					<div class="down-animate sign">{{> loginButtons }}</div>	    	
 		    </li>
-		    <br><br><br>
+		    
 		    {{#if currentUser}}
+		    <h3 class="h3-edit-pref">&middot; Edit Preferences &middot;</h3>
+		    {{#each preferences}}
 		    <li>
 		    	<div class="preferences-div" horizontal layout>
 			    	<div center-justified class="dolla-div"><span class="dollar">$</span></div>
 			    	<div flex>
 						<paper-input-decorator floatingLabel label="set rate per mile" id="rate-per-mile" type="number" class="input-big">
-							<input type="number" is="core-input" id="rate-input" class="">
+							<input type="number" is="core-input" id="rate-input" class="" value="{{ rate }}">
 						</paper-input-decorator>
 					</div>
 				</div>
 		    </li>
+		    <br>
+		    <li>
+				<div horizontal layout center-justified class="pref-drive-container">
+					<div flex one><core-icon icon="notification:drive-eta" id="trend-up-arrow"></core-icon></div>
+					<div flex two><span>TEAM</span></div>
+					<div flex two><paper-toggle-button class="drive-toggle" checked="{{ drive }}"></paper-toggle-button></div>
+					<div flex two><span>SOLO</span></div>
+				</div>
+		    </li>
+		    <br>
 		    <li>
 		    	<div horizontal layout center-justified>
 		    		<paper-button id="save-preferences"><span class="save-rate-label">SAVE</span><core-icon icon="save" id="save-rate-icon"></core-icon></paper-button>
 		    	</div>
 		    </li>
+		    {{/each}}
 		    {{/if}}
 		    
 		</ul>
 	</div>
 	<br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br>
 </div>
-<paper-toast text="UPDATE SUCCESFUL " id="update-rate-toast"> 
+<paper-toast text="UPDATE SUCCESFUL " id="update-preferences-toast"> 
 	
 	<span class="glyphicon glyphicon-ok-sign"></span>
 

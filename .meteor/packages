@@ -5,11 +5,10 @@
 # but you can also edit it by hand.
 
 meteor-platform
-autopublish
-insecure
 ecwyne:polymer-elements
 iron:router
 accounts-ui
 accounts-password
 twbs:bootstrap
 meteorhacks:fast-render
+momentjs:moment
