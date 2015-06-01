@@ -27,10 +27,34 @@
 		    <br>
 		    <li>
 				<div horizontal layout center-justified class="pref-drive-container">
-					<div flex one><core-icon icon="notification:drive-eta" id="trend-up-arrow"></core-icon></div>
+					<div flex two><core-icon icon="notification:drive-eta" id="trend-up-arrow"></core-icon></div>
+					<div flex one><core-icon icon="social:people-outline"></core-icon></div>
 					<div flex two><span>TEAM</span></div>
 					<div flex two><paper-toggle-button class="drive-toggle" checked="{{ drive }}"></paper-toggle-button></div>
+					<div flex one><core-icon icon="social:person-outline"></core-icon></div>
 					<div flex two><span>SOLO</span></div>
+				</div>
+		    </li>
+		    <br>
+		    <li>
+		    	<div class="preferences-div" horizontal layout id="fir">
+			    	<div center-justified class="driver-name-div"><core-icon icon="social:person" id="trend-up-arrow" class="person-icon"></core-icon></div>
+			    	<div flex>
+						<paper-input-decorator floatingLabel label="1st Driver's Name " id="driver-one-name" type="number" class="input-big">
+							<input type="text" is="core-input" id="first-driver-input" class="driver-input" value="{{ firstDriver }}">
+						</paper-input-decorator>
+					</div>
+				</div>
+		    </li>
+		    <br>
+		    <li>
+		    	<div class="preferences-div" horizontal layout id="sec">
+			    	<div center-justified class="driver-name-div"><core-icon icon="social:person" id="trend-up-arrow" class="person-icon"></core-icon></div>
+			    	<div flex>
+						<paper-input-decorator floatingLabel label="2nd Driver's Name " id="driver-one-name" type="number" class="input-big">
+							<input type="text" is="core-input" id="second-driver-input" class="driver-input" value="{{ secondDriver }}">
+						</paper-input-decorator>
+					</div>
 				</div>
 		    </li>
 		    <br>

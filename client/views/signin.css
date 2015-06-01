@@ -40,6 +40,26 @@ input#rate-input {
 #save-rate-icon {
 	color: #428bca;
 }
+.person-icon {
+	margin-top: 2px;
+}
+.driver-name-div {
+	margin-left: 15px;
+}
+.driver-name-input {
+	margin-left: 10px;
+
+}
+input#first-driver-input {
+	font-size: 2.5em;
+	color: #4dc47d;
+	margin-left: 5px;
+}
+input#second-driver-input {
+	font-size: 2.5em;
+	color: #4dc47d;
+	margin-left: 5px;
+}
 
 #update-preferences-toast span {
 	color: #4dc47d;

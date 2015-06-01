@@ -45,10 +45,10 @@
   			{ upsert: true }
   		);
   	},
-  	setPreferences: function(id, rate, drive) {
+  	setPreferences: function(id, rate, drive, first, second) {
   		Profile.update(
   			{ userID: id },
-  			{ userID: id , rate: rate, drive: drive},
+  			{ userID: id , rate: rate, drive: drive, firstDriver: first, secondDriver: second},
   			{ upsert: true }
 		  );
   	}

@@ -128,18 +128,35 @@
   // SIGN *** EVENTS
   Template.sign_in.events({
     'click #save-preferences': function() {
-    Meteor.call('setPreferences', Meteor.userId(), $('#rate-input').val(), $('.drive-toggle').prop('checked'))
+    Meteor.call('setPreferences', Meteor.userId(), $('#rate-input').val(), $('.drive-toggle').prop('checked'), $('#first-driver-input').val().toUpperCase(), $('#second-driver-input').val().toUpperCase() )
     toast(document.querySelector('#update-preferences-toast'));
+    },
+    'click .drive-toggle': function() {
+      
+      if ($('.drive-toggle').prop('checked') == true) {
+        $('#sec').fadeIn('slow');
+      } else {
+        $('#sec').fadeOut('slow');
+      }
     }
   });
 
+/*
+  Template.sign_in.rendered = function() {
+
+    if ($('.drive-toggle').prop('checked') == true) {
+        $('#sec').show();
+      } else {
+        $('#sec').hide();
+      }
+  };
+*/
   //SIGN *** HELPERS
   Template.sign_in.helpers({
     preferences: function() {
       return  Profile.find({userID: Meteor.user()._id}).fetch();
       Session.set('drive', $('.drive-toggle').prop('checked'));
-    },
-
+    }
   });
 
   //LOG *** EVENTS
@@ -152,6 +169,17 @@
     }
   });
 
+  //LOG *** HELPERS 
+  Template.logbook.helpers({
+    drivers: function() {
+      return  Profile.find({userID: Meteor.user()._id}).fetch();
+    }
+  });
+
+  //LOG *** RENDER
+  Template.logbook.rendered = function() {
+    $('.second').css('color','#444');
+  };
   
 
   var calc = function(){

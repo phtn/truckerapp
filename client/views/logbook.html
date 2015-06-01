@@ -8,12 +8,15 @@
 		<paper-icon-button icon="arrow-back" id="back-calc"></paper-icon-button>
 	</a>
 	</div>
+	{{#if currentUser}}
+	{{#each drivers}}
 	<div flex class="topbar" two center-justified>
-		
+		<span class="topbar-label first">{{ firstDriver }}</span>
 	</div>
 	<div flex class="topbar" two center-justified>
+		<span class="topbar-label second">{{ secondDriver }}</span>
 	</div>
-	{{#if currentUser}}	
+	{{/each}}
 	<div flex class="pull-right results-icon topbar" one center-justified>
 		<paper-icon-button icon="add" id="add" style="color: #428bca;"></paper-icon-button>
 	</div>
@@ -69,13 +72,13 @@
 						<span class="logs-label">450</span>
 					</div>
 					<div class="log-panel" center-justified flex two>
-						<span class="logs-label">78</span>
+						<span class="logs-label">7h 45m</span>
 					</div>
 					<div class="log-panel" center-justified flex two>
-						<span class="logs-label">ON-DUTY</span>
+						<span class="logs-label">7h 55m</span>
 					</div>
 					<div class="log-panel" center-justified flex one>
-						<span class="logs-label">OFF</span>
+						<span class="logs-label">N</span>
 					</div>
 				</div>
 			</li>
