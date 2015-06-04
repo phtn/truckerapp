@@ -1,24 +1,22 @@
 <template name="logbook">
 <div flex horizontal layout center-justified class="down-animate">
-	<span class="glyphicon glyphicon-stats"></span> <h4> Log Book </h4>
+	<span class="glyphicon glyphicon-book"></span> <h4> Log Book </h4>
 </div>
 <div horizontal layout center-justified class="topbar-container">
 	<div class="pull-left results-icon topbar" flex one center-justified>
-	<a href="/">
-		<paper-icon-button icon="arrow-back" id="back-calc"></paper-icon-button>
-	</a>
+		<paper-icon-button icon="arrow-back" class="back-btn" id="back-to-home"></paper-icon-button>
 	</div>
 	{{#if currentUser}}
 	{{#each drivers}}
-	<div flex class="topbar" two center-justified>
+	<div flex class="topbar first-driver-div" two center-justified>
 		<span class="topbar-label first">{{ firstDriver }}</span>
 	</div>
-	<div flex class="topbar" two center-justified>
+	<div flex class="topbar second-driver-div" two center-justified>
 		<span class="topbar-label second">{{ secondDriver }}</span>
 	</div>
 	{{/each}}
 	<div flex class="pull-right results-icon topbar" one center-justified>
-		<paper-icon-button icon="add" id="add" style="color: #428bca;"></paper-icon-button>
+		<paper-icon-button icon="add" id="add-log-btn" style="color: #428bca;"></paper-icon-button>
 	</div>
 	{{/if}}
 
@@ -35,20 +33,20 @@
 <div vertical layout>
 
 	<div horizontal layout class="left-animate log-list">
+		<div class="log-panel" center-justified flex two>
+			<span class="log-panel-label">DATE</span>
+		</div>
+		<div class="log-panel" center-justified flex two>
+			<span class="log-panel-label">MILEAGE</span>
+		</div>
+		<div class="log-panel" center-justified flex two>
+			<span class="log-panel-label">DRIVING</span>
+		</div>
+		<div class="log-panel" center-justified flex two>
+			<span class="log-panel-label">ON-DUTY</span>
+		</div>
 		<div class="log-panel" center-justified flex one>
-			<core-icon icon="event" class="log-date-icon"></core-icon>
-		</div>
-		<div class="log-panel" center-justified flex two>
-			<span class="results-label">MILEAGE</span>
-		</div>
-		<div class="log-panel" center-justified flex two>
-			<span class="results-label">DRIVING</span>
-		</div>
-		<div class="log-panel" center-justified flex two>
-			<span class="results-label">ON-DUTY</span>
-		</div>
-		<div class="log-panel" center-justified flex one>
-			<span class="results-label">OFF</span>
+			<span class="log-panel-label">OFF</span>
 		</div>
 	</div>
 	{{#unless currentUser}}
@@ -62,30 +60,77 @@
 	{{/unless}}
 
 	{{#if currentUser}}
-		<ul class="ul-logs">
-			<li class="li-logs">
-				<div horizontal layout class="left-animate log-list">
+		<ul class="ul-logs" id="first-driver-log">
+			{{#each driverLogOne }}
+			<li class="li-logs li-logs-one">
+				<div horizontal layout class="up-animate log-list">
+					<div class="log-panel" center-justified flex two>
+						<span class="logs-label">{{ logdate}}</span>
+					</div>
+					<div class="log-panel" center-justified flex two>
+						<span class="logs-label">{{ mileage }}</span>
+					</div>
+					<div class="log-panel" center-justified flex two>
+						<span class="logs-label">{{ driving }}</span>
+					</div>
+					<div class="log-panel" center-justified flex two>
+						<span class="logs-label">{{ onduty }}</span>
+					</div>
 					<div class="log-panel" center-justified flex one>
-						<span class="logs-label">4/27</span>
-					</div>
-					<div class="log-panel" center-justified flex two>
-						<span class="logs-label">450</span>
-					</div>
-					<div class="log-panel" center-justified flex two>
-						<span class="logs-label">7h 45m</span>
-					</div>
-					<div class="log-panel" center-justified flex two>
-						<span class="logs-label">7h 55m</span>
-					</div>
-					<div class="log-panel" center-justified flex one>
-						<span class="logs-label">N</span>
+						<span class="logs-label">{{ isoff }}</span>
 					</div>
 				</div>
 			</li>
+			{{/each}}
+		</ul>
+
+		<ul class="ul-logs" id="second-driver-log">
+			{{#each driverLogTwo}}
+			<li class="li-logs li-logs-two">
+				<div horizontal layout class="up-animate log-list">
+					<div class="log-panel" center-justified flex two>
+						<span class="logs-label">{{ logdate }}</span>
+					</div>
+					<div class="log-panel" center-justified flex two>
+						<span class="logs-label">{{ mileage }}</span>
+					</div>
+					<div class="log-panel" center-justified flex two>
+						<span class="logs-label">{{ driving }}</span>
+					</div>
+					<div class="log-panel" center-justified flex two>
+						<span class="logs-label">{{ onduty }}</span>
+					</div>
+					<div class="log-panel" center-justified flex one>
+						<span class="logs-label">{{ isoff}}</span>
+					</div>
+				</div>
+			</li>
+			{{/each}}
 		</ul>
 	{{/if}}
 </div>
+
 </div>
+	<footer id="footer">
+		<div horizontal layout class="left-animate log-list">
+		<div class="log-panel" center-justified flex two>
+			<span class="log-panel-label">DATE</span>
+		</div>
+		<div class="log-panel" center-justified flex two>
+			<span class="log-panel-label" id="total-mileage-text">TM : {{ getTotalMileage }}</span>
+		</div>
+		<div class="log-panel" center-justified flex two>
+			<span class="log-panel-label">DRIVING</span>
+		</div>
+		<div class="log-panel" center-justified flex two>
+			<span class="log-panel-label">ON-DUTY</span>
+		</div>
+		<div class="log-panel" center-justified flex one>
+			<span class="log-panel-label">OFF</span>
+		</div>
+	</div>
+	</footer>
+
 
 <paper-toast text="YOU MUST BE SIGNED IN TO ADD LOGS " id="error-add-log"> 
 	

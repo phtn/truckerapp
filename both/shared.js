@@ -1,3 +1,4 @@
 Profile = new Mongo.Collection('profile');
 Saved = new Mongo.Collection('saved');
-Logs = new Mongo.Collection('logs');
+DriverOneLogs = new Mongo.Collection('driveronelogs');
+DriverTwoLogs = new Mongo.Collection('drivertwologs');

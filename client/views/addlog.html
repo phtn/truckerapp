@@ -1,0 +1,58 @@
+<!-- CALC -->
+
+<template name="addlog">
+<div flex horizontal layout center-justified class="down-animate">
+	<span class="glyphicon glyphicon-edit"></span> <h4> Add Trip Logs </h4>
+</div>
+<div horizontal layout center-justified class="topbar-container">
+	<div class="pull-left results-icon topbar" flex one center-justified>
+		<paper-icon-button icon="arrow-back" class="back-btn" id="back-to-logs"></paper-icon-button>
+	</div>
+	{{#if currentUser}}
+	<div flex class="topbar first-driver-div" two center-justified>
+		<span class="topbar-label" id="driver-label-text">DRIVER : </span>
+	</div>
+	<div flex class="topbar second-driver-div" two center-justified>
+		<span class="topbar-label" id="driver-name-text">{{ whichDriver }}</span>
+	</div>
+	<div flex class="pull-right results-icon topbar" one center-justified>
+		<paper-icon-button icon="save" id="add-log-btn" style="color: #428bca;"></paper-icon-button>
+	</div>
+	{{/if}}
+
+</div>
+<div horizontal center-justified layout class="today-div">
+		<span id="today">Today is : {{ today }}</span>
+</div>
+<div vertical layout class="addlog-input-div">
+	
+	<div class="left-animate">
+		<paper-input-decorator floatingLabel label="Date" id="addlog-date" type="number" class="input-big">
+			<input type="text" is="core-input" id="addlog-date-input" class="addlog">
+		</paper-input-decorator>
+	</div>
+	<div class="left-animate">
+		<paper-input-decorator floatingLabel label="Mileage" id="addlog-mileage" type="number" class="input-big">
+			<input type="number" is="core-input" id="addlog-mileage-input" class="addlog">
+		</paper-input-decorator>
+	</div>
+	<div class="left-animate">
+		<paper-input-decorator floatingLabel label="Driving" id="addlog-driving" type="number" class="input-big">
+			<input type="number" is="core-input" id="addlog-driving-input" class="addlog">
+		</paper-input-decorator>
+	</div>
+	<div class="left-animate">
+		<paper-input-decorator floatingLabel label="On-Duty" id="addlog-onduty" type="number" class="input-big">
+			<input type="number" is="core-input" id="addlog-onduty-input" class="addlog">
+		</paper-input-decorator>
+	</div>
+	<div class="left-animate">
+		<paper-input-decorator floatingLabel label="Off" id="addlog-isoff" type="number" class="input-big">
+			<input type="number" is="core-input" id="addlog-isoff-input" class="addlog">
+		</paper-input-decorator>
+	</div>
+</div>
+<br><br><br><br><br>
+</template>
+
+

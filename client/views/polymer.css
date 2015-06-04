@@ -3,6 +3,9 @@
 paper-icon-button#exit {
     color: #428bca;
 }
+paper-icon-button.back-btn {
+    color: #428bca;
+}
 
 paper-input {
 	color: #ccc;
@@ -23,5 +26,13 @@ paper-input-decorator /deep/ ::-webkit-input-placeholder {
 }
 paper-icon-button#save-preferences {
     color: #428bca;
-} 
-
+}
+paper-button.goto-saved-btn {
+    background-color: #428bca;
+    color: #ccc;
+}
+paper-input-decorator[focused] /deep/ .floating-label,
+paper-input-decorator[focused] /deep/ .label-text {
+/* floating label color when the input is focused */
+color: #ccc !important;
+}

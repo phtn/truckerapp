@@ -1,0 +1,36 @@
+#driver-label-text {
+	padding-left: 40px;
+	color: #444;
+}
+#driver-name-text {
+	padding-right: 40px;
+}
+.today-div {
+	margin-top: 10px;
+}
+#today {
+	color: #555;
+}
+.addlog-input-div {
+	margin: 10px 15px;
+}
+input#addlog-date-input {
+	font-size: 1.8em;
+	color: #4dc47d;
+}
+input#addlog-mileage-input {
+	font-size: 1.8em;
+	color: #4dc47d;
+}
+input#addlog-driving-input {
+	font-size: 1.8em;
+	color: #4dc47d;
+}
+input#addlog-onduty-input {
+	font-size: 1.8em;
+	color: #4dc47d;
+}
+input#addlog-isoff-input {
+	font-size: 1.8em;
+	color: #4dc47d;
+}

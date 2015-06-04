@@ -4,6 +4,7 @@
   Meteor.startup(function () {
 
   });
+
   //PUBLISH
   Meteor.publish('showSavedResults', function() {
   	return Saved.find();
@@ -11,8 +12,11 @@
   Meteor.publish('showProfile', function() {
   	return Profile.find();
   });
-  Meteor.publish('showLogs', function() {
-    return Logs.find();
+  Meteor.publish('showDriverOneLogs', function() {
+    return DriverOneLogs.find();
+  });
+  Meteor.publish('showDriverTwoLogs', function() {
+    return DriverTwoLogs.find();
   });
 
   //METHODS
@@ -51,7 +55,41 @@
   			{ userID: id , rate: rate, drive: drive, firstDriver: first, secondDriver: second},
   			{ upsert: true }
 		  );
-  	}
+  	},
+    //DRIVER ONE
+    insertDriverOneLog: function(id, name, logdate, mileage, driving, onduty, isoff) {
+      DriverOneLogs.insert({
+        userID: id,
+        name: name,
+        logdate: logdate,
+        mileage: mileage,
+        driving: driving,
+        onduty: onduty,
+        isoff: isoff,
+        createdAt: new Date()
+      })
+    },
+    removeLogOne: function(id) {
+      DriverOneLogs.remove(id)
+    },
+
+    //DRIVER TWO
+    insertDriverTwoLog: function(id, name, logdate, mileage, driving, onduty, isoff) {
+      DriverTwoLogs.insert({
+        userID: id,
+        name: name,
+        logdate: logdate,
+        mileage: mileage,
+        driving: driving,
+        onduty: onduty,
+        isoff: isoff,
+        createdAt: new Date()
+      })
+    },
+      removeLogTwo: function(id) {
+      DriverTwoLogs.remove(id)
+    }
+
   });
 
 

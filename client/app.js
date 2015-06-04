@@ -63,22 +63,29 @@
   Template.results.rendered = function() {
     Session.set('getDriver',$('#driving-value').text());
     Session.set('getTripDuration', getDurationCalc(Session.get('getRawHours'), getDriveHours(Session.get('getDriver'))));
+    $('.goto-saved').hide();
   };
 
   // RESULTS *** events
   Template.results.events({
     'click #save-results': function(){
       Meteor.call('saveResults', Meteor.userId(), Session.get('getMiles'), Session.get('getSpeed'), Session.get('getTripDuration'), Session.get('getTotalHours'), Session.get('getTripValue'), Session.get('getPerHour'));
-      console.log(Meteor.userId());
+      
+      //console.log(Meteor.userId());
       //delete Session.keys['getMiles'];
+      
       toast(document.querySelector('#save-toast'));
+      setTimeout($('.goto-saved').fadeIn('slow'), 10000);
     },
     'click #save-sign': function() {
       toast(document.querySelector('#error-save'));
     },
     'click #result-sign': function() {
       Router.go('/signin')
-    } 
+    },
+    'click .goto-saved-btn': function() {
+      Router.go('/saved');
+    }
   });
 
   
@@ -115,7 +122,7 @@
    // SAVED *** EVENTS
   Template.saved.events({
     'click #exit': function() {
-    Router.go('/');
+      history.back();
     },
     'click .saved-li': function() {
       Meteor.call('removeSaved', this._id);
@@ -131,26 +138,30 @@
     Meteor.call('setPreferences', Meteor.userId(), $('#rate-input').val(), $('.drive-toggle').prop('checked'), $('#first-driver-input').val().toUpperCase(), $('#second-driver-input').val().toUpperCase() )
     toast(document.querySelector('#update-preferences-toast'));
     },
-    'click .drive-toggle': function() {
+    'change .drive-toggle': function() {
       
-      if ($('.drive-toggle').prop('checked') == true) {
+      //console.log($('.drive-toggle').prop('checked'));
+
+      if ($('.drive-toggle').prop('checked') == false) {
         $('#sec').fadeIn('slow');
+        $('#team-icon').css('color', '#4dc47d')
+        $('#solo-icon').css('color', '#656565')
+
       } else {
         $('#sec').fadeOut('slow');
+        $('#solo-icon').css('color', '#4dc47d')
+        $('#team-icon').css('color', '#656565')
       }
     }
   });
 
-/*
-  Template.sign_in.rendered = function() {
 
-    if ($('.drive-toggle').prop('checked') == true) {
-        $('#sec').show();
-      } else {
-        $('#sec').hide();
-      }
+  Template.sign_in.rendered = function() {
+    var getUserDrive = Profile.findOne({userID: Meteor.userId()})
+    var isDrive = (getUserDrive && !getUserDrive.drive);
+      $('#sec').toggle(isDrive);
   };
-*/
+
   //SIGN *** HELPERS
   Template.sign_in.helpers({
     preferences: function() {
@@ -164,21 +175,212 @@
     'click #log-sign': function() {
       Router.go('/signin');
     },
+    'click #add-log-btn': function() {
+      Router.go('/addlog');
+    },
     'click #add-not-signed': function() {
      toast(document.querySelector('#error-add-log')); 
+    },
+    'click .second': function() {
+      $('.second').css('color', '#ccc');
+      $('.first').css('color', '#444');
+      $('#first-driver-log').fadeOut('fast');
+      $('#second-driver-log').fadeIn('slow');
+      Session.set('whichDriver', $('.second').text());
+    },
+    'click .first': function() {
+      $('.first').css('color', '#ccc');
+      $('.second').css('color', '#444');
+      $('#second-driver-log').fadeOut('fast');
+      $('#first-driver-log').fadeIn('slow');
+      Session.set('whichDriver', $('.first').text());
+    },
+    'click .li-logs-one': function() {
+      Meteor.call('removeLogOne', this._id);
+    },
+    'click .li-logs-two': function() {
+      Meteor.call('removeLogTwo', this._id);
+    },
+    'click #back-to-home': function() {
+      Router.go('/');
+    },
+    'click #total-mileage-text': function() {
+      var mileage = DriverOneLogs.find({name: $('.first').text()}).fetch().reverse();
+      var count = 0;
+      var mileageArr = [];
+      var totalMileage = 0;
+      mileage.forEach(function (miles) {
+        //console.log(count + ": " + miles.mileage);
+        count += 1;
+        var each = parseFloat(miles.mileage);
+        mileageArr.push(each);
+        console.log(each);
+
+        for (var i = 0, sum = 0; i < mileageArr.length; sum += mileageArr[i++]) {
+        //console.log(count + ' ' + sum);
+      
+        }
+      //console.log(mileageArr.length);
+      console.log(sum);
+      Session.set('totalMileage', sum);
+      });
     }
   });
 
   //LOG *** HELPERS 
   Template.logbook.helpers({
     drivers: function() {
-      return  Profile.find({userID: Meteor.user()._id}).fetch();
+      return  Profile.find({userID: Meteor.userId()}).fetch();
+    },
+    driverLogOne: function() {
+      Meteor.subscribe('showDriverOneLogs');
+      return DriverOneLogs.find({userID: Meteor.userId()}).fetch().reverse();
+    },
+    driverLogTwo: function() {
+      Meteor.subscribe('showDriverTwoLogs');
+      return DriverTwoLogs.find({userID: Meteor.userId()}).fetch().reverse();
+    },
+    getTotalMileage: function() {
+      return Session.get('totalMileage');
     }
+
   });
+
+  
 
   //LOG *** RENDER
   Template.logbook.rendered = function() {
-    $('.second').css('color','#444');
+    Meteor.subscribe('showDriverOneLogs');
+    var getProfile = Profile.findOne({userID: Meteor.userId()}),
+        isTeam = (getProfile && !getProfile.drive);
+      $('.second-driver-div').toggle(isTeam);
+      $('.second').css('color','#444');
+      $('#second-driver-log').hide();
+      Session.set('whichDriver', $('.first').text());
+
+      console.log('test-log-render');
+
+      
+
+
+/*        var mileage = DriverOneLogs.find({name: $('.first').text()}).fetch().reverse();
+        var count = 0;
+        var mileageArr = [];
+        mileage.forEach(function (miles) {
+          //console.log(count + ": " + miles.mileage);
+          count += 1;
+          var each = parseFloat(miles.mileage);
+          mileageArr.push(each);
+          console.log(each);
+
+          for (var i = 0, sum = 0; i < mileageArr.length; sum += mileageArr[i++]) {
+          //console.log(count + ' ' + sum);
+        
+          }
+        //console.log(mileageArr.length);
+        console.log(sum);
+        Session.set('totalMileage', sum);
+        });
+*/
+    }
+
+  //ADDLOG *** HELPERS
+  Template.addlog.helpers({
+    whichDriver: function() {
+      return Session.get('whichDriver');
+    },
+    today: function() {
+      var date = new Date();
+      return date;
+    }
+  });
+
+  //ADDLOG *** EVENTS
+  Template.addlog.events({
+    'click #back-to-logs': function() {
+      Router.go('/logbook');
+    },
+    'click #add-log-btn': function() {
+      
+      var whichDriver = Profile.findOne({userID: Meteor.userId()});
+      
+      //console.log(whichDriver.firstDriver);
+      //console.log($('#driver-name-text').text());
+      //console.log($('#driver-name-text').text() == whichDriver.firstDriver);
+      //console.log(Session.get('getDateInput'))
+
+      if ($('#driver-name-text').text() == whichDriver.firstDriver) {
+        Meteor.call('insertDriverOneLog', Meteor.userId(), Session.get('getDriverName'), Session.get('getDateInput'), Session.get('getMileageInput'), Session.get('getDrivingInput'), Session.get('getOnDutyInput'), Session.get('getIsOffInput'));
+      } else { 
+        Meteor.call('insertDriverTwoLog', Meteor.userId(), Session.get('getDriverName'), Session.get('getDateInput'), Session.get('getMileageInput'), Session.get('getDrivingInput'), Session.get('getOnDutyInput'), Session.get('getIsOffInput'))
+      }
+
+      //Meteor.userId()
+      //addlog-mileage-input
+      //addlog-driving-input
+      //addlog-onduty-input
+      //addlog-isoff-input
+
+    },
+    'keyup #addlog-date-input': function() {
+      Session.set('getDateInput', $('#addlog-date-input').val())
+    },
+    'keyup #addlog-mileage-input': function() {
+      Session.set('getMileageInput', $('#addlog-mileage-input').val())
+    },
+    'keyup #addlog-driving-input': function() {
+      Session.set('getDrivingInput', $('#addlog-driving-input').val())
+    },
+    'keyup #addlog-onduty-input': function() {
+      Session.set('getOnDutyInput', $('#addlog-onduty-input').val())
+    },
+    'keyup #addlog-isoff-input': function() {
+      Session.set('getIsOffInput', $('#addlog-isoff-input').val())
+    }
+  });
+
+  //ADDLOG *** RENDER
+  Template.addlog.rendered = function() {
+
+    Meteor.subscribe('showDriverOneLogs');
+    Meteor.subscribe('showDriverTwoLogs');
+
+    var d = new Date(),
+        month = d.getMonth(),
+        day = d.getDay(),
+        date = month + '/' + day;
+    $('#addlog-date-input').val(date);
+
+    Session.set('getDriverName', $('#driver-name-text').text());
+    Session.set('getDateInput', $('#addlog-date-input').val());
+    Session.set('getMileageInput', $('#addlog-mileage-input').val());
+    Session.set('getDrivingInput', $('#addlog-driving-input').val());
+    Session.set('getOnDutyInput', $('#addlog-onduty-input').val());
+    Session.set('getIsOffInput', $('#addlog-isoff-input').val());
+
+    //var totalMileageArr = [];
+
+  };
+
+  //SWIFT *** HELPERS
+  Template.swift.helpers({
+
+  });
+
+  //SWIFT *** EVENTS
+  Template.swift.events({
+    'paste .swift-text-area': function() {
+      $('.swift-btn-div').fadeIn('slow');
+    },
+    'click .swift-clear': function() {
+      $('.swift-text-area').val('');
+      $('.swift-btn-div').fadeOut('slow');
+    }
+  });
+
+  //SWIFT *** RENDER
+  Template.swift.rendered = function () {
+    $('.swift-btn-div').hide();
   };
   
 
