@@ -57,7 +57,7 @@
 		  );
   	},
     //DRIVER ONE
-    insertDriverOneLog: function(id, name, logdate, mileage, driving, onduty, isoff) {
+    insertDriverOneLog: function(id, name, logdate, mileage, driving, onduty, isoff, week, tm) {
       DriverOneLogs.insert({
         userID: id,
         name: name,
@@ -66,15 +66,24 @@
         driving: driving,
         onduty: onduty,
         isoff: isoff,
+        week: week,
+        totalmileage: tm,
         createdAt: new Date()
       })
+    },
+    updateTotal: function(id, tm) {
+      DriverOneLogs.update(
+        { userID: id },
+        { $setOnInsert: { totalmileage: tm } },
+        { upsert: true }
+      );
     },
     removeLogOne: function(id) {
       DriverOneLogs.remove(id)
     },
 
     //DRIVER TWO
-    insertDriverTwoLog: function(id, name, logdate, mileage, driving, onduty, isoff) {
+    insertDriverTwoLog: function(id, name, logdate, mileage, driving, onduty, isoff, week, tm) {
       DriverTwoLogs.insert({
         userID: id,
         name: name,
@@ -83,6 +92,8 @@
         driving: driving,
         onduty: onduty,
         isoff: isoff,
+        week: week,
+        totalmileage: tm,
         createdAt: new Date()
       })
     },

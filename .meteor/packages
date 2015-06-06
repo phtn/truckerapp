@@ -12,3 +12,4 @@ accounts-password
 twbs:bootstrap
 meteorhacks:fast-render
 momentjs:moment
+reactive-var

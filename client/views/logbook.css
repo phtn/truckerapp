@@ -26,6 +26,12 @@
 	font-size: 1em;
 	color: #ccc;
 }
+.log-panel-label-footer {
+	font-family: 'Roboto', sans-serif;
+	font-weight: 300;
+	font-size: 1em;
+	color: #428bca;
+}
 .logs-label {
 	font-family: 'Roboto', sans-serif;
 	font-weight: 100;
@@ -33,7 +39,16 @@
 	color: #4dc47d;
 	//border: 1px solid red;
 	padding: 0;
-}.error {
+}
+.isoff-label {
+	font-family: 'Roboto', sans-serif;
+	font-weight: 100;
+	font-size: 1em;
+	color: #555;
+	//border: 1px solid red;
+	padding: 0;
+}
+.error {
 	margin-right: 2px;
 	color: #f57d00;
 }
@@ -43,10 +58,10 @@
 }
 
 #footer {
-	border: 1px solid red;
+	//border: 1px solid red;
 	bottom: 0;
 	height: 50px;
-	border-top: 1px solid #333;
+	//border-top: 1px solid #333;
 	margin: 20px auto;
 }
 .footer-btn {

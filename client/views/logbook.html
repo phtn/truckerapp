@@ -46,7 +46,7 @@
 			<span class="log-panel-label">ON-DUTY</span>
 		</div>
 		<div class="log-panel" center-justified flex one>
-			<span class="log-panel-label">OFF</span>
+			<span class="log-panel-label">LOG</span>
 		</div>
 	</div>
 	{{#unless currentUser}}
@@ -68,16 +68,16 @@
 						<span class="logs-label">{{ logdate}}</span>
 					</div>
 					<div class="log-panel" center-justified flex two>
-						<span class="logs-label">{{ mileage }}</span>
+						<span class="logs-label">{{ mileageView mileage }}</span>
 					</div>
 					<div class="log-panel" center-justified flex two>
-						<span class="logs-label">{{ driving }}</span>
+						<span class="logs-label">{{drivingView driving }}</span>
 					</div>
 					<div class="log-panel" center-justified flex two>
-						<span class="logs-label">{{ onduty }}</span>
+						<span class="logs-label onduty-label">{{ onDutyView onduty }}</span>
 					</div>
 					<div class="log-panel" center-justified flex one>
-						<span class="logs-label">{{ isoff }}</span>
+						<span class="isoff-label" id="isoff-label" style="{{ styleIsOff }}">{{ isOff onduty }}</span>
 					</div>
 				</div>
 			</li>
@@ -92,16 +92,16 @@
 						<span class="logs-label">{{ logdate }}</span>
 					</div>
 					<div class="log-panel" center-justified flex two>
-						<span class="logs-label">{{ mileage }}</span>
+						<span class="logs-label">{{ mileageView mileage }}</span>
 					</div>
 					<div class="log-panel" center-justified flex two>
-						<span class="logs-label">{{ driving }}</span>
+						<span class="logs-label">{{ drivingView driving }}</span>
 					</div>
 					<div class="log-panel" center-justified flex two>
-						<span class="logs-label">{{ onduty }}</span>
+						<span class="logs-label">{{ onDutyView onduty }}</span>
 					</div>
 					<div class="log-panel" center-justified flex one>
-						<span class="logs-label">{{ isoff}}</span>
+						<span class="isoff-label" id="isoff-label">{{ isOff isoff}}</span>
 					</div>
 				</div>
 			</li>
@@ -114,19 +114,19 @@
 	<footer id="footer">
 		<div horizontal layout class="left-animate log-list">
 		<div class="log-panel" center-justified flex two>
-			<span class="log-panel-label">DATE</span>
+			<span class="log-panel-label-footer">DATE</span>
 		</div>
 		<div class="log-panel" center-justified flex two>
-			<span class="log-panel-label" id="total-mileage-text">TM : {{ getTotalMileage }}</span>
+			<span class="log-panel-label-footer" id="total-mileage-text"></span>
 		</div>
 		<div class="log-panel" center-justified flex two>
-			<span class="log-panel-label">DRIVING</span>
+			<span class="log-panel-label-footer">DRIVING</span>
 		</div>
 		<div class="log-panel" center-justified flex two>
-			<span class="log-panel-label">ON-DUTY</span>
+			<span class="log-panel-label-footer">ON-DUTY</span>
 		</div>
 		<div class="log-panel" center-justified flex one>
-			<span class="log-panel-label">OFF</span>
+			<span class="log-panel-label-footer">OFF</span>
 		</div>
 	</div>
 	</footer>

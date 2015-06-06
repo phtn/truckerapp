@@ -197,33 +197,13 @@
     },
     'click .li-logs-one': function() {
       Meteor.call('removeLogOne', this._id);
+      getMileageLog();
     },
     'click .li-logs-two': function() {
       Meteor.call('removeLogTwo', this._id);
     },
     'click #back-to-home': function() {
       Router.go('/');
-    },
-    'click #total-mileage-text': function() {
-      var mileage = DriverOneLogs.find({name: $('.first').text()}).fetch().reverse();
-      var count = 0;
-      var mileageArr = [];
-      var totalMileage = 0;
-      mileage.forEach(function (miles) {
-        //console.log(count + ": " + miles.mileage);
-        count += 1;
-        var each = parseFloat(miles.mileage);
-        mileageArr.push(each);
-        console.log(each);
-
-        for (var i = 0, sum = 0; i < mileageArr.length; sum += mileageArr[i++]) {
-        //console.log(count + ' ' + sum);
-      
-        }
-      //console.log(mileageArr.length);
-      console.log(sum);
-      Session.set('totalMileage', sum);
-      });
     }
   });
 
@@ -235,6 +215,84 @@
     driverLogOne: function() {
       Meteor.subscribe('showDriverOneLogs');
       return DriverOneLogs.find({userID: Meteor.userId()}).fetch().reverse();
+    },
+    mileageView: function(mileageRaw) {
+      var v = '';
+      if (mileageRaw != ''){
+        v = mileageRaw;
+      } else {
+        v = '-';
+      }
+      return v;
+    },
+    drivingView: function(drivingRaw) {
+      if (drivingRaw != '') {
+      var dot = drivingRaw.indexOf('.'),
+          h = drivingRaw.substring(dot-1,dot),
+          m = drivingRaw.substring((1+dot)),
+          r = '';
+
+          if (m.length == 1){
+            m = '0' + m;
+          }
+          r = h + ' : ' + m;
+      } else {
+          r = '-';
+      }
+          
+      return r;
+
+    },
+    onDutyView: function(onDutyRaw) {
+      var dot = onDutyRaw.indexOf('.'),
+          h = onDutyRaw.substring(dot-1,dot),
+          m = onDutyRaw.substring((1+dot)),
+          r = '';
+
+          if (m.length == 1){
+            m = '0' + m;
+          }
+          
+          if (onDutyRaw == ''){
+            r = '-';
+            //$('.onduty-label').css('color', '#ff7243');
+          } else {
+            r = h + ' : ' + m;
+            //$('.onduty-label').css('color', '#4dc47d');
+          }
+
+      return r;
+
+    },
+    totalDriving: function(onDutyRaw) {
+      var dot = onDutyRaw.indexOf('.'),
+          h = onDutyRaw.substring(dot-1,dot),
+          m = onDutyRaw.substring((1+dot)),
+          r = '';
+          
+          if (m.length == 1){
+            m = '0' + m;
+          }
+
+          if (onDutyRaw == ''){
+            r = '&middot;';
+          } else {
+            r = h + ' : ' + m;      
+          }
+      
+      return r;
+
+    },
+    isOff: function(onduty) {
+      if (onduty == ''){
+        return 'OFF';
+      } else {
+        return 'W'
+        Session.set('style', 'color:#428bca');
+      }
+    },
+    styleIsOff: function() {
+      return Session.get('style')
     },
     driverLogTwo: function() {
       Meteor.subscribe('showDriverTwoLogs');
@@ -259,30 +317,13 @@
       Session.set('whichDriver', $('.first').text());
 
       console.log('test-log-render');
-
+      Session.set('getWeek', getWeek());
       
+    getMileageLogOne();
 
-
-/*        var mileage = DriverOneLogs.find({name: $('.first').text()}).fetch().reverse();
-        var count = 0;
-        var mileageArr = [];
-        mileage.forEach(function (miles) {
-          //console.log(count + ": " + miles.mileage);
-          count += 1;
-          var each = parseFloat(miles.mileage);
-          mileageArr.push(each);
-          console.log(each);
-
-          for (var i = 0, sum = 0; i < mileageArr.length; sum += mileageArr[i++]) {
-          //console.log(count + ' ' + sum);
-        
-          }
-        //console.log(mileageArr.length);
-        console.log(sum);
-        Session.set('totalMileage', sum);
-        });
-*/
-    }
+    
+  }
+      
 
   //ADDLOG *** HELPERS
   Template.addlog.helpers({
@@ -310,9 +351,11 @@
       //console.log(Session.get('getDateInput'))
 
       if ($('#driver-name-text').text() == whichDriver.firstDriver) {
-        Meteor.call('insertDriverOneLog', Meteor.userId(), Session.get('getDriverName'), Session.get('getDateInput'), Session.get('getMileageInput'), Session.get('getDrivingInput'), Session.get('getOnDutyInput'), Session.get('getIsOffInput'));
+        Meteor.call('insertDriverOneLog', Meteor.userId(), Session.get('getDriverName'), Session.get('getDateInput'), Session.get('getMileageInput'), Session.get('getDrivingInput'), Session.get('getOnDutyInput'), Session.get('getIsOff'), Session.get('getWeek'), Session.get('totalMileage'));
+        //getMileageLog();
+        //console.log('o' + Session.get('totalMileage'))
       } else { 
-        Meteor.call('insertDriverTwoLog', Meteor.userId(), Session.get('getDriverName'), Session.get('getDateInput'), Session.get('getMileageInput'), Session.get('getDrivingInput'), Session.get('getOnDutyInput'), Session.get('getIsOffInput'))
+        Meteor.call('insertDriverTwoLog', Meteor.userId(), Session.get('getDriverName'), Session.get('getDateInput'), Session.get('getMileageInput'), Session.get('getDrivingInput'), Session.get('getOnDutyInput'), Session.get('getIsOff'), Session.get('getWeek'), Session.get('totalMileage'));
       }
 
       //Meteor.userId()
@@ -333,9 +376,6 @@
     },
     'keyup #addlog-onduty-input': function() {
       Session.set('getOnDutyInput', $('#addlog-onduty-input').val())
-    },
-    'keyup #addlog-isoff-input': function() {
-      Session.set('getIsOffInput', $('#addlog-isoff-input').val())
     }
   });
 
@@ -356,7 +396,16 @@
     Session.set('getMileageInput', $('#addlog-mileage-input').val());
     Session.set('getDrivingInput', $('#addlog-driving-input').val());
     Session.set('getOnDutyInput', $('#addlog-onduty-input').val());
-    Session.set('getIsOffInput', $('#addlog-isoff-input').val());
+    Session.set('getIsOff', '');
+
+    /*Session.set('getIsOff', function() {
+      if (Session.get('getMileageInput') !== '') {
+        return 'N';
+      } else {
+        return 'OFF';
+      }
+    });
+*/
 
     //var totalMileageArr = [];
 
@@ -438,6 +487,12 @@
     return teamTime;
   } //END OF GETDURATIONCALC
 
+  var getWeek = function() {
+    var now = new Date();
+    var onejan = new Date(now.getFullYear(), 0, 1);
+    week = Math.ceil( (((now - onejan) / 86400000) + onejan.getDay() + 1) / 7 );
+    return week;
+  }
 
 
   //TOAST
@@ -448,8 +503,9 @@
   //INSERT PROFILE
     Deps.autorun(function(){
       if(Meteor.userId()){
-        //Session.set('userID', Meteor.userId());
+        
         Meteor.call('insertUser', Meteor.userId());
+
       }
   });
 
@@ -476,10 +532,60 @@
       return driveText;
       
     });
-    
 
+  //GET MILEAGE LOG
+  UI.registerHelper('getMileageLog', function() {
 
+      var mileage = DriverOneLogs.find({name: $('.first').text()}).fetch().reverse();
+        var count = 0;
+        var mileageArr = [];
+        mileage.forEach(function (miles) {
+          //console.log(count + ": " + miles.mileage);
+          count += 1;
+          var each = parseFloat(miles.mileage);
+          mileageArr.push(each);
+          //console.log(each);
 
+          for (var i = 0, sum = 0; i < mileageArr.length; sum += mileageArr[i++]) {
+          //console.log(count + ' ' + sum);
+        
+          }
+        //console.log(mileageArr.length);
+        //console.log(sum);
+        //Session.set('totalMileage', sum);
+        
+
+        //return Session.get('totalMileage');
+        });
+        
+  });
+
+  var getMileageLogOne = function() {
+        var mileage = DriverOneLogs.find({userID: Meteor.userId(),mileage: {$ne:''},name: $('.first').text()}).fetch().reverse();
+        var count = 0;
+        var mileageArr = [];
+        mileage.forEach(function (miles) {
+          //console.log(count + ": " + miles.mileage);
+          count += 1;
+          var each = parseFloat(miles.mileage);
+          
+          mileageArr.push(each);
+          //console.log(each);
+
+          for (var i = 0, sum = 0; i < mileageArr.length; sum += mileageArr[i++]) {
+          //console.log(count + ' ' + sum);
+          
+          }
+          Session.set('totalMileage', sum);
+        //console.log(mileageArr.length);
+        //console.log('sum: ' + sum);
+        
+        });
+          console.log(Session.get('totalMileage'));
+          $('#total-mileage-text').text(Session.get('totalMileage'));
+          Meteor.call('updateTotal', Meteor.userId(), Session.get('totalMileage'));
+          Router.go('/logbook');
+  }
 
 
 
